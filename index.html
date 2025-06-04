@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisi-Kisi Soal Sosiologi Interaktif Kelas X - Materi Lengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Harmoni Belajar -->
+    <!-- Application Structure Plan: Aplikasi ini dirancang dengan struktur modular. Pengguna dapat memilih "Materi Pokok" dari bilah navigasi horizontal yang dapat digulir. Area konten kemudian secara dinamis menampilkan "Indikator Soal" yang terkait dengan topik yang dipilih. Setiap indikator dapat diklik untuk menampilkan detail lebih lanjut seperti Level Kognitif, Bentuk Soal, materi penjelasan yang lebih lengkap, dan ide contoh pertanyaan yang relevan dan mendalam. Struktur ini dipilih karena kejelasan, kemudahan navigasi, dan memungkinkan siswa untuk fokus belajar pada area tertentu dari kisi-kisi dengan pemahaman yang lebih baik. -->
+    <!-- Visualization & Content Choices: Konten utama bersifat tekstual (indikator soal dan topik). "Visualisasi" utama adalah penyajian informasi yang terstruktur dan interaktif.
+        - Topik (Materi Pokok): Disajikan sebagai item navigasi yang dapat diklik (tombol). Tujuan: Mengatur & Navigasi. Metode: Tombol HTML + JS untuk tampilan konten dinamis. Justifikasi: Akses yang jelas dan langsung ke bagian konten yang berbeda.
+        - Indikator (Indikator Soal): Disajikan sebagai daftar item atau kartu di bawah setiap topik. Tujuan: Menginformasikan & Mendetailkan. Metode: Daftar/kartu HTML + JS untuk detail yang dapat diperluas saat diklik. Interaksi: Mengklik indikator akan menampilkan Level Kognitif, Bentuk Soal, "Materi Lebih Lanjut" (berisi penjelasan konsep, kaitan materi, poin penting), dan "Contoh Soal Lebih Dalam". Justifikasi: Memecah informasi secara hierarkis, mendorong pemikiran aktif, dan menyediakan materi pendukung yang komprehensif.
+        - Level Kognitif & Bentuk Soal: Ditampilkan dalam detail yang diperluas. Tujuan: Menginformasikan. Metode: Teks. Justifikasi: Memberikan konteks tentang kedalaman pemahaman yang diharapkan dan jenis soal.
+        - Tidak ada grafik data (chart) yang diperlukan untuk jenis data ini. Tidak ada SVG/Mermaid yang digunakan. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8F5F2; /* Warm Neutral Background */
+            color: #4A4A4A; /* Dark Grey for Text */
+        }
+        .nav-container {
+            scrollbar-width: thin;
+            scrollbar-color: #E57373 #F8F5F2;
+        }
+        .nav-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .nav-container::-webkit-scrollbar-track {
+            background: #F8F5F2;
+            border-radius: 10px;
+        }
+        .nav-container::-webkit-scrollbar-thumb {
+            background-color: #E57373; /* Subtle Accent Red */
+            border-radius: 10px;
+            border: 2px solid #F8F5F2;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+            color: #757575; /* Medium Grey for Nav Buttons */
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-button.active, .nav-button:hover {
+            color: #D32F2F; /* Stronger Accent Red for Active State */
+            border-bottom-color: #D32F2F;
+        }
+        .indicator-item {
+            background-color: #FFFFFF; /* White for Content Cards */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .indicator-item:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .indicator-details {
+            background-color: #FFF7F5; /* Very Light Warm Neutral for sub-cards / details */
+            border-left: 3px solid #FFAB91; /* Light Accent Orange for border */
+            line-height: 1.6;
+        }
+        .details-content h4 {
+            font-size: 1.05em; /* Slightly larger for subheadings */
+        }
+        .details-content ul {
+            padding-left: 20px; /* Indent list items */
+        }
+        .details-content li {
+            margin-bottom: 0.3rem;
+        }
+        .details-enter-active {
+            transition: all 0.4s ease-out;
+            max-height: 1200px; /* Increased max-height for more content */
+            opacity: 1;
+        }
+        .details-leave-active {
+            transition: all 0.3s ease-in;
+            max-height: 0;
+            opacity: 0;
+        }
+        .details-enter-from,
+        .details-leave-to {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+         .details-enter-to,
+        .details-leave-from {
+            max-height: 1200px; /* Increased max-height for more content */
+            opacity: 1;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md py-6">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold text-gray-800">Kisi-Kisi Soal Sosiologi Kelas X</h1>
+            <p class="text-gray-600 mt-1">Jelajahi materi pokok dan indikator soal secara interaktif dengan penjelasan lengkap!</p>
+        </div>
+    </header>
+
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm py-3">
+        <div id="navContainer" class="container mx-auto px-4 nav-container overflow-x-auto">
+            <div id="navTabs" class="flex space-x-4">
+                <!-- Nav tabs will be populated by JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <div id="welcomeMessage" class="text-center py-12">
+            <p class="text-xl text-gray-700">Pilih Materi Pokok di atas untuk melihat Indikator Soal beserta penjelasannya.</p>
+        </div>
+        <div id="indicatorsContainer" class="space-y-3">
+            <!-- Indicators will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <footer class="text-center py-8 mt-12 border-t border-gray-200">
+        <p class="text-gray-500 text-sm">Sumber: Kisi-kisi Soal Sosiologi Kelas X | Dibuat Interaktif dengan Materi Lengkap</p>
+    </footer>
+
+    <script>
+        const kisiKisiText = `
+No.,Indikator Soal,Materi Pokok,Level Kognitif,Bentuk Soal
+1,Mengidentifikasi sifat sosiologi berdasarkan pendekatan ilmiah,Karakteristik Sosiologi,C2 (Memahami),Pilihan Ganda
+2,Menganalisis aspek sosiologis dalam fenomena budaya remaja,Objek Kajian Sosiologi,C4 (Menganalisis),Pilihan Ganda
+3,Merumuskan masalah penelitian berdasarkan hubungan variabel sosial,Metode Penelitian Sosiologi,C4 (Menganalisis),Pilihan Ganda
+4,Menentukan pendekatan sosiologis untuk solusi intoleransi di sekolah,Pendekatan Sosiologi,C3 (Menerapkan),Pilihan Ganda
+5,Mengkaji penyebab dan pola interaksi dalam fenomena tawuran pelajar,Konflik Sosial,C4 (Menganalisis),Pilihan Ganda
+6,Menjelaskan pentingnya mempelajari sosiologi di era digital,Fungsi Sosiologi,C2 (Memahami),Pilihan Ganda
+7,Mengidentifikasi pendekatan sosiologi berdasarkan pengumpulan data,Pendekatan Sosiologi,C2 (Memahami),Pilihan Ganda
+8,Menganalisis dampak sosial dari urbanisasi di kota besar,Dampak Urbanisasi,C4 (Menganalisis),Pilihan Ganda
+9,Menentukan langkah ilmiah dalam meneliti keterlambatan siswa,Metode Penelitian Sosiologi,C3 (Menerapkan),Pilihan Ganda
+10,Menjelaskan peran konflik dalam dinamika masyarakat,Konflik Sosial,C2 (Memahami),Pilihan Ganda
+11,Menentukan tindakan tepat terhadap pelanggaran norma di sekolah,Norma Sosial,C3 (Menerapkan),Pilihan Ganda
+12,Merumuskan solusi sosiologis terhadap lunturnya nilai gotong royong,Nilai dan Norma Sosial,C5 (Mengevaluasi),Pilihan Ganda
+13,Mengidentifikasi jenis norma yang dilanggar dalam perilaku remaja,Norma Sosial,C2 (Memahami),Pilihan Ganda
+14,Menganalisis pendekatan efektif dalam mengatasi kebiasaan membuang sampah sembarangan,Pendekatan Sosiologi,C4 (Menganalisis),Pilihan Ganda
+15,Membedakan antara norma hukum dan norma sosial,Norma Sosial dan Hukum,C2 (Memahami),Pilihan Ganda
+16,Menilai proses sosialisasi berdasarkan perilaku remaja,Proses Sosialisasi,C5 (Mengevaluasi),Pilihan Ganda
+17,Menjelaskan pentingnya nilai dan norma dalam kehidupan sosial,Nilai dan Norma Sosial,C2 (Memahami),Pilihan Ganda
+18,Menganalisis pergeseran nilai dalam masyarakat modern,Perubahan Sosial,C4 (Menganalisis),Pilihan Ganda
+19,Menentukan sanksi sosial terhadap pelanggaran norma ringan,Sanksi Sosial,C2 (Memahami),Pilihan Ganda
+20,Merancang cara membangun kesadaran kolektif tentang toleransi di sekolah,Nilai dan Norma Sosial,C6 (Mencipta),Pilihan Ganda
+21,Menganalisis peran media sebagai agen sosialisasi,Agen Sosialisasi,C4 (Menganalisis),Pilihan Ganda
+22,Menilai proses sosialisasi dalam konteks gegar budaya,Sosialisasi dan Kebudayaan,C5 (Mengevaluasi),Pilihan Ganda
+23,Mengidentifikasi bentuk sosialisasi dalam kelompok bermain,Proses Sosialisasi,C2 (Memahami),Pilihan Ganda
+24,Menentukan bentuk interaksi sosial berdasarkan penyesuaian sikap individu,Interaksi Sosial,C3 (Menerapkan),Pilihan Ganda
+25,Menjelaskan pentingnya sosialisasi dalam pembentukan kepribadian individu,Proses Sosialisasi,C2 (Memahami),Pilihan Ganda
+26,Menganalisis pengaruh keaktifan siswa dalam organisasi terhadap perkembangan sosial,Proses Sosialisasi,C4 (Menganalisis),Pilihan Ganda
+27,Menentukan proses yang terjadi saat seseorang menolak nilai dari orang tua,Proses Sosialisasi,C3 (Menerapkan),Pilihan Ganda
+28,Menjelaskan pengaruh media sosial sebagai agen sosialisasi,Agen Sosialisasi,C2 (Memahami),Pilihan Ganda
+29,Mengidentifikasi bentuk interaksi antara guru dan murid dalam proses belajar,Interaksi Sosial,C2 (Memahami),Pilihan Ganda
+30,Menentukan bentuk interaksi sosial antara dua kelompok etnis yang hidup berdampingan,Interaksi Sosial,C3 (Menerapkan),Pilihan Ganda
+31,Menganalisis ciri-ciri kelompok sosial,Kelompok Sosial,C4 (Menganalisis),Pilihan Ganda
+32,Menjelaskan pentingnya kelompok primer dalam pembentukan kepribadian,Kelompok Sosial,C2 (Memahami),Pilihan Ganda
+33,Membedakan antara kelompok formal dan informal,Kelompok Sosial,C2 (Memahami),Pilihan Ganda
+34,Menilai dampak positif dari konflik sosial,Konflik Sosial,C5 (Mengevaluasi),Pilihan Ganda
+35,Menganalisis sumber utama konflik sosial dalam masyarakat multikultural,Konflik Sosial,C4 (Menganalisis),Pilihan Ganda
+36,Menentukan upaya untuk menyatukan masyarakat pasca-konflik,Integrasi Sosial,C3 (Menerapkan),Pilihan Ganda
+37,Menjelaskan faktor yang memudahkan tercapainya integrasi sosial,Integrasi Sosial,C2 (Memahami),Pilihan Ganda
+38,Mengidentifikasi jenis konflik berdasarkan perbedaan ideologi,Konflik Sosial,C2 (Memahami),Pilihan Ganda
+39,Menentukan bentuk penyelesaian konflik dengan pihak ketiga yang netral,Penyelesaian Konflik,C3 (Menerapkan),Pilihan Ganda
+40,Menganalisis pengaruh teknologi terhadap perubahan sosial,Perubahan Sosial,C4 (Menganalisis),Pilihan Ganda
+        `;
+
+        const parseData = (text) => {
+            const lines = text.trim().split('\n').slice(1); 
+            return lines.map(line => {
+                const parts = line.split(',');
+                const no = parts[0].trim();
+                const levelKognitif = parts[parts.length - 2].trim();
+                let bentukSoal = parts[parts.length - 1].trim();
+                // Typo correction for "Piliha Ganda"
+                if (bentukSoal.toLowerCase() === "piliha") bentukSoal = "Pilihan Ganda";
+                
+                const materiPokok = parts[parts.length - 3].trim();
+                const indikatorSoal = parts.slice(1, parts.length - 3).join(',').trim();
+
+                return {
+                    no,
+                    indikator: indikatorSoal,
+                    materi: materiPokok,
+                    level: levelKognitif,
+                    bentuk: bentukSoal,
+                    // Brief idea for initial display, more detailed question will be in expanded content
+                    sampleQuestionIdea: generateBriefSampleQuestionIdea(indikatorSoal, levelKognitif) 
+                };
+            });
+        };
+
+        const generateBriefSampleQuestionIdea = (indicator, level) => {
+            // This provides a very short hint for the main list item.
+            if (level.includes("C2")) return `Jelaskan konsep terkait '${indicator.substring(0,20)}...'`;
+            if (level.includes("C3")) return `Bagaimana menerapkan pengetahuan tentang '${indicator.substring(0,20)}...'`;
+            if (level.includes("C4")) return `Analisislah faktor/dampak terkait '${indicator.substring(0,20)}...'`;
+            if (level.includes("C5")) return `Berikan penilaian terhadap '${indicator.substring(0,20)}...'`;
+            if (level.includes("C6")) return `Rancang solusi berdasarkan '${indicator.substring(0,20)}...'`;
+            return "Pikirkan contoh soalnya!";
+        };
+        
+        function getIndicatorDetailsContent(item) {
+            let penjelasanKonsep = "";
+            let kaitanMateri = "";
+            let poinPenting = []; 
+            let contohSoalLanjut = "";
+
+            switch (item.no) {
+                case "1":
+                    penjelasanKonsep = "Sosiologi sebagai ilmu pengetahuan memiliki ciri khas yang membedakannya dari pengetahuan umum. Sifat-sifat ini didasarkan pada penggunaan metode ilmiah dalam mengkaji fenomena sosial, sehingga menghasilkan pengetahuan yang objektif dan dapat dipertanggungjawabkan.";
+                    kaitanMateri = "Memahami sifat-sifat ini adalah langkah awal untuk mengerti bagaimana sosiologi bekerja sebagai disiplin ilmu. Karakteristik sosiologi menunjukkan bahwa sosiologi bukan sekadar opini, melainkan studi sistematis tentang masyarakat.";
+                    poinPenting = [
+                        "<strong>Empiris:</strong> Pengetahuan sosiologi didasarkan pada observasi terhadap kenyataan sosial dan akal sehat, bukan spekulasi atau dugaan semata. Contoh: Penelitian tentang dampak media sosial pada remaja dilakukan dengan mengamati perilaku remaja secara langsung, melalui survei, atau analisis konten.",
+                        "<strong>Teoretis:</strong> Sosiologi selalu berusaha menyusun abstraksi (teori) dari hasil-hasil observasi untuk menjelaskan hubungan sebab-akibat antar fenomena sosial. Teori ini berfungsi untuk memahami pola-pola yang terjadi di masyarakat. Contoh: Teori konflik menjelaskan bahwa perubahan sosial seringkali disebabkan oleh pertentangan antar kelompok yang memiliki kepentingan berbeda.",
+                        "<strong>Kumulatif:</strong> Teori-teori sosiologi dibangun, diperbaiki, diperluas, dan diperdalam berdasarkan teori-teori yang sudah ada sebelumnya. Ilmu sosiologi berkembang seiring waktu. Contoh: Teori interaksionisme simbolik mengembangkan gagasan dari teori-teori sebelumnya tentang bagaimana individu menciptakan makna dalam interaksi sosial.",
+                        "<strong>Non-etis:</strong> Sosiologi tidak bertujuan untuk menilai baik atau buruknya suatu fakta sosial, melainkan berupaya menjelaskannya secara analitis dan objektif. Sosiolog mendeskripsikan apa adanya, bukan apa yang seharusnya. Contoh: Sosiolog mengkaji fenomena korupsi untuk memahami penyebab, pola, dan dampaknya bagi masyarakat, bukan untuk menghakimi pelakunya (itu ranah hukum atau etika moral)."
+                    ];
+                    contohSoalLanjut = "Seorang sosiolog melakukan penelitian tentang meningkatnya tren 'flexing' (pamer kekayaan) di media sosial di kalangan anak muda. Ia mengumpulkan data melalui wawancara mendalam dan analisis konten unggahan. Sifat sosiologi manakah yang paling menonjol dalam pendekatan penelitian tersebut? Jelaskan mengapa sifat tersebut penting dalam menghasilkan kajian sosiologi yang valid!";
+                    break;
+                case "2":
+                    penjelasanKonsep = "Objek kajian sosiologi adalah masyarakat secara keseluruhan, yang mencakup berbagai aspek kehidupan manusia selama mereka berinteraksi dan hidup bersama. Ini termasuk pola-pola interaksi sosial, kelompok sosial, lembaga sosial, struktur sosial, proses sosial, hingga perubahan sosial dan kebudayaan yang dihasilkannya.";
+                    kaitanMateri = "Fenomena budaya remaja, seperti tren fashion, bahasa gaul, musik, atau penggunaan media sosial, merupakan salah satu aspek menarik dari objek kajian sosiologi. Sosiologi dapat menganalisis bagaimana budaya remaja terbentuk, bagaimana ia memengaruhi identitas dan perilaku remaja, serta hubungannya dengan struktur masyarakat yang lebih luas.";
+                    poinPenting = [
+                        "Memahami bahwa fokus utama sosiologi adalah <strong>hubungan antarmanusia</strong> dan proses sosial yang timbul dari hubungan tersebut.",
+                        "<strong>Budaya remaja (youth culture)</strong> sebagai subkultur dengan nilai, norma, simbol, dan gaya hidup khas yang bisa dipengaruhi oleh faktor sosial (teman sebaya, keluarga, sekolah), ekonomi (status, konsumsi), dan teknologi (media sosial, internet).",
+                        "Aspek sosiologis dalam budaya remaja yang bisa dianalisis: pembentukan identitas kelompok, pengaruh teman sebaya (peer group pressure), konformitas terhadap tren, deviasi (perilaku menyimpang dari norma umum), peran media dalam menyebarkan budaya, dan bagaimana budaya remaja mencerminkan atau menantang nilai-nilai masyarakat dewasa."
+                    ];
+                    contohSoalLanjut = "Fenomena 'cosplay' (costume play) semakin populer di kalangan remaja Indonesia, di mana mereka berdandan dan berperilaku seperti karakter fiksi dari anime, manga, atau game. Analisislah fenomena 'cosplay' tersebut dari sudut pandang objek kajian sosiologi! Aspek-aspek sosiologis apa saja (misalnya, terkait identitas, kelompok, atau interaksi) yang dapat Anda identifikasi dan jelaskan dari fenomena budaya remaja tersebut?";
+                    break;
+                 case "3":
+                    penjelasanKonsep = "Merumuskan masalah penelitian adalah langkah awal yang krusial dalam metode penelitian sosiologi. Masalah penelitian yang baik biasanya muncul dari pengamatan terhadap fenomena sosial yang menarik, relevan, dan dapat diteliti. Hubungan antar variabel sosial (dua atau lebih konsep yang nilainya bervariasi) sering menjadi dasar perumusan masalah.";
+                    kaitanMateri = "Dalam metode penelitian sosiologi, kemampuan merumuskan masalah secara jelas dan terukur sangat penting karena akan mengarahkan seluruh proses penelitian, mulai dari pemilihan teori, metode pengumpulan data, hingga analisis. Variabel sosial bisa berupa usia, tingkat pendidikan, jenis kelamin, status ekonomi, intensitas penggunaan media sosial, dll.";
+                    poinPenting = [
+                        "Memahami bahwa <strong>masalah penelitian</strong> bukan sekadar pertanyaan, tetapi pernyataan yang menunjukkan adanya kesenjangan antara harapan (das sollen) dan kenyataan (das sein), atau adanya keingintahuan ilmiah terhadap suatu fenomena.",
+                        "<strong>Variabel sosial</strong> adalah konsep yang memiliki variasi nilai. Ada variabel bebas (independen, yang mempengaruhi) dan variabel terikat (dependen, yang dipengaruhi).",
+                        "Cara merumuskan masalah: biasanya dalam bentuk pertanyaan penelitian yang spesifik, jelas, dan dapat diuji (researchable). Contoh: 'Apakah ada hubungan antara intensitas penggunaan TikTok dengan tingkat kepuasan diri pada remaja putri di SMA X?' (Variabel: intensitas TikTok & kepuasan diri)."
+                    ];
+                    contohSoalLanjut = "Seorang peneliti sosial mengamati bahwa di sekolah Z, siswa yang aktif dalam kegiatan ekstrakurikuler cenderung memiliki Indeks Prestasi Kumulatif (IPK) yang lebih tinggi dibandingkan siswa yang tidak aktif. Berdasarkan pengamatan ini, rumuskanlah sebuah masalah penelitian yang jelas dan spesifik yang menunjukkan hubungan antar variabel sosial yang relevan!";
+                    break;
+                case "4":
+                    penjelasanKonsep = "Pendekatan sosiologis menawarkan berbagai perspektif (teori) dan metode untuk memahami dan mencari solusi terhadap masalah sosial, termasuk intoleransi. Pendekatan ini tidak hanya melihat gejala, tetapi juga akar penyebab masalah dalam struktur sosial, budaya, atau interaksi.";
+                    kaitanMateri = "Intoleransi di sekolah (misalnya, bullying berdasarkan suku/agama, pengucilan, atau diskriminasi) adalah masalah sosial yang kompleks. Pendekatan sosiologi seperti fungsionalisme, konflik, atau interaksionisme simbolik dapat membantu menganalisis mengapa intoleransi terjadi dan bagaimana cara mengatasinya secara efektif.";
+                    poinPenting = [
+                        "<strong>Pendekatan Fungsionalis:</strong> Melihat intoleransi sebagai disfungsi yang mengganggu keharmonisan sekolah. Solusi: Memperkuat nilai-nilai bersama, sosialisasi toleransi, dan peran lembaga sekolah dalam integrasi.",
+                        "<strong>Pendekatan Konflik:</strong> Melihat intoleransi sebagai akibat dari ketidaksetaraan kekuasaan atau persaingan antar kelompok di sekolah. Solusi: Mendorong kesetaraan, keadilan, dan memberdayakan kelompok minoritas.",
+                        "<strong>Pendekatan Interaksionisme Simbolik:</strong> Fokus pada bagaimana makna intoleransi dikonstruksikan dalam interaksi sehari-hari (misalnya, melalui stereotip, labeling). Solusi: Mengubah persepsi, meningkatkan empati, dan dialog antar kelompok."
+                    ];
+                    contohSoalLanjut = "Di sebuah SMA, sering terjadi kasus perundungan (bullying) verbal yang menyasar siswa dari kelompok etnis minoritas. Jika Anda seorang sosiolog, pendekatan sosiologis (misalnya, fungsionalis, konflik, atau interaksionisme simbolik) manakah yang akan Anda gunakan untuk menganalisis dan merumuskan solusi terhadap masalah intoleransi tersebut? Jelaskan alasan pemilihan pendekatan Anda dan berikan contoh solusi konkretnya!";
+                    break;
+                case "5":
+                    penjelasanKonsep = "Tawuran pelajar adalah salah satu bentuk konflik sosial yang melibatkan kekerasan fisik antar kelompok pelajar. Sosiologi mengkaji fenomena ini untuk memahami faktor penyebabnya (misalnya, masalah identitas, solidaritas kelompok sempit, pengaruh lingkungan) dan pola interaksi yang terjadi sebelum, selama, dan sesudah tawuran.";
+                    kaitanMateri = "Sebagai bentuk konflik sosial, tawuran pelajar menunjukkan adanya kegagalan dalam mekanisme pengendalian sosial dan proses sosialisasi nilai-nilai damai. Analisis sosiologis dapat mengungkap akar masalah yang lebih dalam, bukan hanya menyalahkan individu pelajar.";
+                    poinPenting = [
+                        "<strong>Penyebab tawuran:</strong> Bisa multifaktor, seperti pencarian jati diri, solidaritas semu dalam geng, rivalitas antar sekolah, masalah keluarga, pengaruh media, kurangnya ruang ekspresi positif, atau bahkan provokasi.",
+                        "<strong>Pola interaksi:</strong> Sebelum tawuran (misalnya, saling ejek di media sosial, perencanaan), selama tawuran (penggunaan simbol, peran pemimpin, eskalasi kekerasan), dan pasca tawuran (dampak pada korban, reaksi sekolah dan masyarakat).",
+                        "Konsep sosiologi yang relevan: kelompok sosial (in-group vs out-group), identitas sosial, konformitas, deviasi, anomi, pengendalian sosial."
+                    ];
+                    contohSoalLanjut = "Sebuah video tawuran antar dua kelompok pelajar dari sekolah yang berbeda menjadi viral di media sosial. Dalam video tersebut terlihat adanya penggunaan atribut tertentu (jaket almamater, bendera) dan yel-yel yang provokatif. Kajilah fenomena tawuran pelajar tersebut dengan fokus pada penyebab dan pola interaksi yang mungkin terjadi! Konsep-konsep sosiologi apa saja yang dapat membantu Anda dalam analisis tersebut?";
+                    break;
+                case "6":
+                    penjelasanKonsep = "Sosiologi memiliki fungsi penting dalam kehidupan masyarakat, terutama di era digital yang penuh dengan perubahan sosial cepat, informasi berlimpah, dan interaksi yang termediasi teknologi. Sosiologi membantu kita memahami dinamika ini secara kritis.";
+                    kaitanMateri = "Fungsi sosiologi mencakup pemahaman sosial, perencanaan sosial, penelitian, dan pemecahan masalah sosial. Di era digital, fungsi ini menjadi semakin relevan untuk menghadapi tantangan seperti hoax, cyberbullying, kesenjangan digital, dan perubahan pola interaksi.";
+                    poinPenting = [
+                        "<strong>Pemahaman Sosial:</strong> Sosiologi membantu kita memahami pola-pola perilaku, struktur sosial, dan perubahan yang terjadi di masyarakat digital (misalnya, bagaimana media sosial mengubah cara kita berteman atau mendapatkan informasi).",
+                        "<strong>Perencanaan Sosial:</strong> Data dan analisis sosiologis dapat digunakan untuk merancang kebijakan atau program yang efektif terkait isu-isu digital (misalnya, program literasi digital).",
+                        "<strong>Penelitian:</strong> Sosiologi menyediakan metode untuk meneliti dampak teknologi digital terhadap individu dan masyarakat.",
+                        "<strong>Pemecahan Masalah Sosial:</strong> Sosiologi membantu mengidentifikasi akar masalah sosial di era digital (misalnya, kecanduan game online, polarisasi opini) dan menawarkan solusi berbasis pemahaman sosial."
+                    ];
+                    contohSoalLanjut = "Di era digital saat ini, penyebaran berita bohong (hoax) melalui media sosial menjadi masalah serius yang dapat memicu konflik di masyarakat. Jelaskan bagaimana pemahaman sosiologi dapat berkontribusi dalam upaya mengatasi masalah penyebaran hoax tersebut! Fungsi sosiologi apa saja yang relevan dalam konteks ini?";
+                    break;
+                case "7":
+                    penjelasanKonsep = "Sosiologi menggunakan berbagai pendekatan dalam mengumpulkan data untuk penelitian, yang secara umum dapat dikelompokkan menjadi pendekatan kuantitatif dan kualitatif. Pilihan pendekatan tergantung pada tujuan penelitian dan jenis data yang ingin diperoleh.";
+                    kaitanMateri = "Pendekatan sosiologi dalam pengumpulan data menentukan bagaimana seorang peneliti mendapatkan informasi tentang fenomena sosial. Memahami perbedaan antara pendekatan kuantitatif dan kualitatif penting untuk menilai validitas dan reliabilitas sebuah penelitian sosiologi.";
+                    poinPenting = [
+                        "<strong>Pendekatan Kuantitatif:</strong> Fokus pada data numerik dan analisis statistik untuk mengukur frekuensi, hubungan antar variabel, atau generalisasi temuan pada populasi yang lebih besar. Metode: Survei dengan kuesioner tertutup, eksperimen, analisis data sekunder statistik.",
+                        "<strong>Pendekatan Kualitatif:</strong> Fokus pada pemahaman mendalam tentang makna, interpretasi, dan konteks sosial dari suatu fenomena. Data berupa narasi, deskripsi, atau observasi. Metode: Wawancara mendalam, observasi partisipan, studi kasus, analisis dokumen/teks.",
+                        "Seringkali kedua pendekatan ini dapat digabungkan (mixed methods) untuk mendapatkan pemahaman yang lebih komprehensif."
+                    ];
+                    contohSoalLanjut = "Seorang sosiolog ingin meneliti tentang pengalaman siswa SMA dalam menghadapi tekanan belajar selama persiapan ujian akhir. Jika ia memutuskan untuk melakukan wawancara mendalam dengan beberapa siswa dan guru BK, serta mengamati interaksi siswa di kelas, pendekatan pengumpulan data sosiologi manakah yang ia gunakan? Jelaskan karakteristik utama dari pendekatan tersebut!";
+                    break;
+                case "8":
+                    penjelasanKonsep = "Urbanisasi adalah proses perpindahan penduduk dari desa ke kota, atau meluasnya pengaruh perkotaan ke wilayah pedesaan. Fenomena ini membawa berbagai dampak sosial yang signifikan bagi kota besar yang menjadi tujuan urbanisasi.";
+                    kaitanMateri = "Dampak urbanisasi bisa bersifat positif (misalnya, penyediaan tenaga kerja, pertumbuhan ekonomi kota) maupun negatif (misalnya, masalah permukiman kumuh, kemacetan, kriminalitas, kesenjangan sosial). Sosiologi menganalisis dampak-dampak ini dalam konteks struktur dan dinamika sosial perkotaan.";
+                    poinPenting = [
+                        "<strong>Dampak Positif:</strong> Peningkatan tenaga kerja untuk sektor industri dan jasa di kota, diversifikasi budaya, modernisasi, peningkatan pendapatan bagi sebagian migran.",
+                        "<strong>Dampak Negatif:</strong> Tekanan pada infrastruktur kota (perumahan, transportasi, sanitasi), munculnya permukiman kumuh (slum area), peningkatan angka pengangguran jika migran tidak memiliki keahlian, masalah sosial seperti kemiskinan kota, kriminalitas, polusi, dan kemacetan.",
+                        "Perubahan gaya hidup dan nilai pada migran (misalnya, dari komunal menjadi individualistis)."
+                    ];
+                    contohSoalLanjut = "Kota-kota besar di Indonesia seperti Jakarta dan Surabaya terus mengalami arus urbanisasi yang tinggi setiap tahunnya. Analisislah minimal tiga dampak sosial negatif yang signifikan akibat urbanisasi yang tidak terkendali di kota-kota besar tersebut! Berikan contoh konkret untuk setiap dampak yang Anda sebutkan.";
+                    break;
+                case "9":
+                    penjelasanKonsep = "Penelitian sosiologi, seperti penelitian ilmiah lainnya, mengikuti langkah-langkah sistematis untuk memperoleh pengetahuan yang valid dan reliabel. Ini dimulai dari identifikasi masalah hingga penarikan kesimpulan.";
+                    kaitanMateri = "Metode penelitian sosiologi menyediakan kerangka kerja terstruktur untuk mengkaji fenomena sosial seperti keterlambatan siswa. Menerapkan langkah-langkah ilmiah memastikan bahwa penelitian dilakukan secara objektif dan hasilnya dapat dipertanggungjawabkan.";
+                    poinPenting = [
+                        "<strong>Langkah-langkah umum penelitian ilmiah:</strong>",
+                        "1. <strong>Merumuskan Masalah:</strong> Mengidentifikasi dan mendefinisikan masalah penelitian (misalnya, 'Faktor-faktor apa yang menyebabkan tingginya angka keterlambatan siswa di SMA Y?').",
+                        "2. <strong>Studi Pendahuluan/Tinjauan Pustaka:</strong> Mengkaji penelitian sebelumnya dan teori yang relevan.",
+                        "3. <strong>Merumuskan Hipotesis (jika penelitian kuantitatif):</strong> Membuat dugaan sementara.",
+                        "4. <strong>Menentukan Pendekatan dan Metode Penelitian:</strong> Memilih desain penelitian, subjek/objek, teknik pengumpulan data (survei, wawancara, observasi).",
+                        "5. <strong>Mengumpulkan Data:</strong> Melaksanakan pengambilan data di lapangan.",
+                        "6. <strong>Menganalisis Data:</strong> Mengolah dan menginterpretasikan data yang terkumpul.",
+                        "7. <strong>Menarik Kesimpulan dan Saran:</strong> Merangkum temuan dan memberikan rekomendasi."
+                    ];
+                    contohSoalLanjut = "Seorang guru BK di SMA Pelita Bangsa ingin meneliti secara ilmiah mengenai tingginya angka keterlambatan siswa di sekolahnya. Tentukan dan jelaskan secara berurutan minimal lima langkah ilmiah pertama yang harus dilakukan oleh guru BK tersebut dalam merancang penelitian sosiologis mengenai fenomena keterlambatan siswa!";
+                    break;
+                case "10":
+                    penjelasanKonsep = "Konflik sosial adalah suatu proses sosial di mana individu atau kelompok berusaha mencapai tujuannya dengan cara menantang pihak lawan, seringkali disertai dengan ancaman atau kekerasan. Meskipun sering dianggap negatif, konflik juga memiliki peran tertentu dalam dinamika masyarakat.";
+                    kaitanMateri = "Konflik sosial merupakan bagian tak terhindarkan dari interaksi sosial. Sosiologi tidak hanya melihat sisi destruktif konflik, tetapi juga fungsi atau peran positifnya dalam mendorong perubahan, memperkuat solidaritas kelompok, atau memperjelas norma.";
+                    poinPenting = [
+                        "<strong>Peran Negatif Konflik:</strong> Keretakan hubungan, kerusakan harta benda, korban jiwa, trauma psikologis, disintegrasi sosial.",
+                        "<strong>Peran Positif Konflik (menurut beberapa sosiolog seperti Lewis Coser):</strong>",
+                        "  - Dapat memperjelas aspek-aspek kehidupan yang belum jelas atau norma yang kabur.",
+                        "  - Memungkinkan penyesuaian kembali norma dan nilai yang ada.",
+                        "  - Meningkatkan solidaritas internal kelompok (in-group solidarity) ketika menghadapi musuh bersama (out-group).",
+                        "  - Dapat menjadi pendorong perubahan sosial (misalnya, konflik antara buruh dan pengusaha bisa menghasilkan kondisi kerja yang lebih baik).",
+                        "  - Sebagai katup pelepas ketegangan (safety valve)."
+                    ];
+                    contohSoalLanjut = "Meskipun konflik sosial seringkali diasosiasikan dengan dampak negatif seperti perpecahan dan kekerasan, beberapa ahli sosiologi berpendapat bahwa konflik juga memiliki peran positif dalam dinamika masyarakat. Jelaskan minimal dua peran positif konflik sosial beserta contohnya dalam kehidupan sehari-hari!";
+                    break;
+                case "11":
+                    penjelasanKonsep = "Norma sosial adalah aturan atau kaidah yang mengatur perilaku individu dalam masyarakat. Pelanggaran norma akan menimbulkan sanksi. Tindakan terhadap pelanggaran norma di sekolah bertujuan untuk menjaga ketertiban dan menegakkan nilai-nilai yang dianut sekolah.";
+                    kaitanMateri = "Norma sosial di sekolah (tata tertib) berfungsi sebagai pedoman perilaku bagi seluruh warga sekolah. Penentuan tindakan yang tepat terhadap pelanggaran harus mempertimbangkan jenis norma yang dilanggar, tingkat pelanggaran, dan tujuan pendidikan (mendidik, bukan hanya menghukum).";
+                    poinPenting = [
+                        "<strong>Identifikasi Pelanggaran:</strong> Memastikan jenis norma apa yang dilanggar (misalnya, norma kesopanan, kedisiplinan, kejujuran) dan seberapa berat pelanggarannya.",
+                        "<strong>Pendekatan Edukatif:</strong> Tindakan sebaiknya bersifat mendidik, bertujuan agar siswa menyadari kesalahannya dan tidak mengulanginya.",
+                        "<strong>Konsistensi dan Keadilan:</strong> Penerapan sanksi harus konsisten dan adil bagi semua pelanggar.",
+                        "<strong>Contoh Tindakan:</strong> Teguran lisan, teguran tertulis, skorsing ringan, pembinaan oleh guru BK, melibatkan orang tua, hingga sanksi yang lebih berat sesuai aturan sekolah jika pelanggaran serius atau berulang."
+                    ];
+                    contohSoalLanjut = "Seorang siswa di sekolah Anda kedapatan menyontek saat ulangan harian. Sebagai bagian dari tim kesiswaan, tentukan tindakan-tindakan yang menurut Anda paling tepat untuk diambil terhadap pelanggaran norma kejujuran tersebut! Jelaskan pertimbangan Anda dalam memilih tindakan-tindakan itu!";
+                    break;
+                case "12":
+                    penjelasanKonsep = "Nilai gotong royong adalah salah satu nilai luhur bangsa Indonesia yang menekankan kerjasama, tolong-menolong, dan solidaritas. Lunturnya nilai ini menjadi masalah sosial yang memerlukan solusi sosiologis yang komprehensif.";
+                    kaitanMateri = "Nilai dan norma sosial seperti gotong royong penting untuk menjaga kohesi sosial. Pendekatan sosiologis dapat membantu menganalisis faktor penyebab lunturnya nilai ini (misalnya, individualisme, urbanisasi, pengaruh budaya global) dan merumuskan strategi untuk merevitalisasinya.";
+                    poinPenting = [
+                        "<strong>Analisis Penyebab:</strong> Mengidentifikasi faktor-faktor struktural dan kultural yang menyebabkan lunturnya gotong royong (misalnya, perubahan gaya hidup, kesibukan individu, kurangnya ruang interaksi komunal).",
+                        "<strong>Strategi Revitalisasi:</strong>",
+                        "  - <strong>Melalui Pendidikan:</strong> Menanamkan kembali nilai gotong royong dalam kurikulum sekolah dan kegiatan ekstrakurikuler.",
+                        "  - <strong>Peran Tokoh Masyarakat/Agama:</strong> Memberikan contoh dan ajakan untuk bergotong royong.",
+                        "  - <strong>Penguatan Komunitas Lokal:</strong> Menciptakan program atau kegiatan bersama di tingkat RT/RW yang mendorong partisipasi warga (misalnya, kerja bakti, acara kebersamaan).",
+                        "  - <strong>Pemanfaatan Media:</strong> Kampanye positif tentang pentingnya gotong royong.",
+                        "  - <strong>Kebijakan Pemerintah:</strong> Mendukung inisiatif-inisiatif komunal."
+                    ];
+                    contohSoalLanjut = "Di sebuah kompleks perumahan modern di perkotaan, semangat gotong royong antar warga terlihat semakin menurun. Kegiatan kerja bakti jarang dihadiri, dan sikap individualistis semakin menguat. Berdasarkan perspektif sosiologis, rumuskanlah minimal tiga solusi konkret yang dapat diupayakan untuk mengatasi lunturnya nilai gotong royong di komunitas tersebut! Jelaskan mengapa solusi tersebut dianggap efektif.";
+                    break;
+                case "13":
+                    penjelasanKonsep = "Perilaku remaja yang dianggap menyimpang seringkali merupakan pelanggaran terhadap norma-norma sosial yang berlaku, baik norma tidak tertulis (kesopanan, kesusilaan) maupun norma tertulis (hukum, tata tertib sekolah).";
+                    kaitanMateri = "Norma sosial berfungsi sebagai panduan perilaku. Mengidentifikasi jenis norma yang dilanggar penting untuk memahami akar masalah perilaku remaja dan menentukan bentuk pengendalian sosial yang tepat.";
+                    poinPenting = [
+                        "<strong>Jenis Norma yang Umum Dilanggar Remaja:</strong>",
+                        "  - <strong>Norma Kesopanan:</strong> Berbicara kasar, tidak menghormati yang lebih tua, berpakaian tidak pantas.",
+                        "  - <strong>Norma Kesusilaan/Moral:</strong> Berbohong, menipu, melakukan perundungan (bullying), terlibat dalam pergaulan bebas.",
+                        "  - <strong>Norma Agama:</strong> Tidak menjalankan ibadah, melanggar larangan agama.",
+                        "  - <strong>Norma Hukum/Tata Tertib:</strong> Bolos sekolah, menyontek, tawuran, vandalisme, penggunaan narkoba, pelanggaran lalu lintas."
+                    ];
+                    contohSoalLanjut = "Seorang remaja sering mengunggah konten di media sosial yang berisi ujaran kebencian dan merendahkan kelompok lain. Selain itu, ia juga sering terlambat masuk sekolah dan tidak mengerjakan tugas. Identifikasilah minimal dua jenis norma sosial berbeda yang dilanggar oleh remaja tersebut dan berikan penjelasan singkat untuk setiap norma yang dilanggar!";
+                    break;
+                case "14":
+                    penjelasanKonsep = "Kebiasaan membuang sampah sembarangan adalah masalah sosial yang berdampak pada lingkungan dan kesehatan. Pendekatan sosiologi dapat menawarkan analisis dan solusi yang efektif dengan memahami perilaku dan struktur sosial yang melatarbelakanginya.";
+                    kaitanMateri = "Pendekatan sosiologi (misalnya, pendekatan perilaku, struktural, atau kultural) dapat digunakan untuk menganalisis mengapa orang membuang sampah sembarangan dan bagaimana mengubah perilaku tersebut secara kolektif.";
+                    poinPenting = [
+                        "<strong>Pendekatan Perilaku (Behavioral):</strong> Fokus pada pembentukan kebiasaan melalui sosialisasi, edukasi, insentif (reward), dan disinsentif (punishment). Contoh: Kampanye kesadaran, penyediaan tempat sampah yang mudah dijangkau, denda bagi pelanggar.",
+                        "<strong>Pendekatan Struktural:</strong> Melihat masalah ini terkait dengan ketersediaan fasilitas (tempat sampah, sistem pengelolaan sampah), kebijakan publik, dan penegakan hukum. Contoh: Perbaikan sistem pengelolaan sampah oleh pemerintah, penegakan aturan yang tegas.",
+                        "<strong>Pendekatan Kultural:</strong> Menganalisis nilai dan norma masyarakat terkait kebersihan dan lingkungan. Contoh: Mengubah persepsi bahwa membuang sampah sembarangan itu 'biasa' menjadi 'memalukan', mempromosikan budaya peduli lingkungan.",
+                        "<strong>Pendekatan Partisipatif:</strong> Melibatkan masyarakat dalam perencanaan dan pelaksanaan program kebersihan."
+                    ];
+                    contohSoalLanjut = "Di sebuah lingkungan padat penduduk, kebiasaan membuang sampah sembarangan di sungai masih marak terjadi meskipun sudah ada larangan. Analisislah minimal dua pendekatan sosiologis berbeda yang menurut Anda paling efektif untuk diterapkan dalam mengatasi kebiasaan tersebut! Jelaskan alasan dan contoh konkret penerapan masing-masing pendekatan.";
+                    break;
+                case "15":
+                    penjelasanKonsep = "Norma hukum adalah aturan formal yang dibuat oleh lembaga negara dan memiliki sanksi tegas yang ditegakkan oleh aparat. Norma sosial adalah aturan tidak tertulis yang tumbuh dan berkembang dalam masyarakat, dengan sanksi berupa reaksi sosial (misalnya, cemoohan, pengucilan).";
+                    kaitanMateri = "Meskipun berbeda, norma sosial dan norma hukum seringkali saling melengkapi dan bertujuan sama, yaitu menciptakan ketertiban. Namun, ada kalanya terjadi ketidaksesuaian antara keduanya.";
+                    poinPenting = [
+                        "<strong>Aspek Pembeda Utama:</strong>",
+                        "  - <strong>Sumber:</strong> Norma hukum (negara/lembaga resmi), Norma sosial (masyarakat/kebiasaan).",
+                        "  - <strong>Bentuk:</strong> Norma hukum (umumnya tertulis, jelas, sistematis), Norma sosial (umumnya tidak tertulis, lebih fleksibel).",
+                        "  - <strong>Sanksi:</strong> Norma hukum (tegas, formal, diatur undang-undang, ditegakkan aparat: denda, penjara), Norma sosial (tidak tegas, informal, reaksi masyarakat: teguran, cemoohan, dikucilkan).",
+                        "  - <strong>Pelaksana:</strong> Norma hukum (aparat penegak hukum), Norma sosial (anggota masyarakat)."
+                    ];
+                    contohSoalLanjut = "Perbuatan korupsi jelas melanggar norma hukum dan dapat dikenai sanksi pidana. Namun, di beberapa konteks sosial, perilaku memberi 'uang pelicin' atau gratifikasi kadang dianggap 'biasa' atau bahkan 'perlu' untuk memperlancar urusan. Bedakan dengan jelas antara norma hukum dan norma sosial dalam konteks fenomena tersebut! Mengapa bisa terjadi perbedaan pandangan antara kedua jenis norma ini terkait perilaku tersebut?";
+                    break;
+                case "16":
+                    penjelasanKonsep = "Sosialisasi adalah proses belajar seumur hidup di mana individu mempelajari nilai, norma, pengetahuan, keterampilan, dan peran sosial agar dapat berpartisipasi secara efektif dalam masyarakat. Perilaku remaja mencerminkan hasil dari proses sosialisasi yang mereka alami.";
+                    kaitanMateri = "Proses sosialisasi membentuk kepribadian dan perilaku individu. Menilai proses sosialisasi berdasarkan perilaku remaja berarti menganalisis sejauh mana agen-agen sosialisasi (keluarga, sekolah, teman sebaya, media) berhasil atau gagal menanamkan nilai dan norma yang diharapkan.";
+                    poinPenting = [
+                        "<strong>Indikator Keberhasilan Sosialisasi:</strong> Perilaku remaja sesuai dengan nilai dan norma positif (jujur, bertanggung jawab, sopan, toleran), mampu beradaptasi, memiliki keterampilan sosial yang baik.",
+                        "<strong>Indikator Kegagalan/Ketidaksempurnaan Sosialisasi:</strong> Perilaku menyimpang (kenakalan, penggunaan narkoba, bullying), kesulitan beradaptasi, kurangnya empati, sikap antisosial.",
+                        "Faktor yang mempengaruhi: Kualitas interaksi dengan agen sosialisasi, konsistensi pesan yang diterima, kondisi lingkungan sosial."
+                    ];
+                    contohSoalLanjut = "Seorang remaja menunjukkan perilaku yang sangat sopan kepada guru dan orang yang lebih tua, aktif dalam kegiatan sosial di sekolah, namun di sisi lain ia sering terlibat dalam perundungan (bullying) terhadap teman sebayanya di media sosial. Berikan penilaian Anda terhadap proses sosialisasi yang dialami remaja tersebut! Aspek sosialisasi mana yang mungkin berjalan baik dan mana yang kurang optimal? Jelaskan analisis Anda.";
+                    break;
+                case "17":
+                    penjelasanKonsep = "Nilai adalah gagasan tentang apa yang dianggap baik, benar, dan penting oleh masyarakat. Norma adalah aturan atau kaidah konkret yang bersumber dari nilai tersebut untuk mengatur perilaku. Keduanya sangat penting untuk menciptakan keteraturan dan prediktabilitas dalam kehidupan sosial.";
+                    kaitanMateri = "Nilai dan norma sosial berfungsi sebagai 'lem perekat' masyarakat. Tanpa nilai dan norma yang disepakati dan dipatuhi bersama, masyarakat akan kacau, penuh konflik, dan sulit mencapai tujuan bersama.";
+                    poinPenting = [
+                        "<strong>Sebagai Panduan Perilaku:</strong> Memberikan arahan tentang apa yang boleh dan tidak boleh dilakukan.",
+                        "<strong>Menjaga Keteraturan dan Stabilitas Sosial:</strong> Mencegah anarki dan kekacauan.",
+                        "<strong>Sebagai Alat Kontrol Sosial:</strong> Mengawasi dan mengendalikan perilaku anggota masyarakat.",
+                        "<strong>Membentuk Solidaritas:</strong> Nilai dan norma bersama dapat memperkuat ikatan antar anggota masyarakat.",
+                        "<strong>Memberikan Identitas:</strong> Nilai dan norma khas suatu masyarakat mencerminkan identitas budayanya."
+                    ];
+                    contohSoalLanjut = "Bayangkan sebuah masyarakat yang tidak memiliki nilai dan norma sosial yang jelas dan disepakati bersama. Jelaskan minimal tiga konsekuensi negatif yang mungkin terjadi dalam kehidupan sosial masyarakat tersebut! Mengapa nilai dan norma dianggap fundamental bagi eksistensi suatu masyarakat?";
+                    break;
+                case "18":
+                    penjelasanKonsep = "Perubahan sosial seringkali diiringi dengan pergeseran nilai dalam masyarakat modern. Nilai-nilai tradisional dapat memudar atau digantikan oleh nilai-nilai baru yang dianggap lebih sesuai dengan tuntutan zaman, misalnya akibat globalisasi, teknologi, dan perubahan struktur sosial.";
+                    kaitanMateri = "Perubahan sosial dan pergeseran nilai adalah dua sisi mata uang. Masyarakat modern cenderung lebih dinamis, sehingga nilai-nilai seperti individualisme, rasionalitas, efisiensi, dan materialisme bisa menguat, sementara nilai-nilai komunal atau tradisional mungkin melemah.";
+                    poinPenting = [
+                        "<strong>Faktor Pendorong Pergeseran Nilai:</strong> Globalisasi (penyebaran budaya global), perkembangan teknologi informasi (internet, media sosial), urbanisasi, pendidikan yang lebih tinggi, perubahan ekonomi (dari agraris ke industri/jasa).",
+                        "<strong>Contoh Pergeseran Nilai:</strong>",
+                        "  - Dari kolektivisme/komunalisme ke <strong>individualisme</strong>.",
+                        "  - Dari pandangan tradisional/mistis ke <strong>rasionalitas/saintifik</strong>.",
+                        "  - Dari orientasi pada masa lalu/tradisi ke orientasi pada <strong>masa depan/kemajuan</strong>.",
+                        "  - Meningkatnya nilai <strong>materialisme</strong> dan <strong>konsumerisme</strong>.",
+                        "  - Pergeseran pandangan tentang peran gender, pernikahan, atau keluarga."
+                    ];
+                    contohSoalLanjut = "Dahulu, masyarakat agraris di Indonesia sangat menjunjung tinggi nilai gotong royong dan kebersamaan. Namun, seiring dengan modernisasi dan urbanisasi, nilai-nilai tersebut di beberapa kalangan masyarakat perkotaan tampak mengalami pergeseran ke arah individualisme. Analisislah faktor-faktor utama yang menyebabkan pergeseran nilai tersebut dalam masyarakat modern! Berikan contoh konkret perwujudan nilai individualisme dalam kehidupan sehari-hari di perkotaan.";
+                    break;
+                case "19":
+                    penjelasanKonsep = "Sanksi sosial adalah reaksi dari masyarakat terhadap perilaku individu atau kelompok, bisa berupa hukuman (jika melanggar norma) atau penghargaan (jika berperilaku sesuai harapan). Pelanggaran norma ringan biasanya mendapatkan sanksi sosial yang bersifat informal dan tidak terlalu berat.";
+                    kaitanMateri = "Sanksi sosial berfungsi sebagai mekanisme pengendalian sosial untuk memastikan anggota masyarakat mematuhi norma. Jenis sanksi disesuaikan dengan tingkat pelanggaran norma.";
+                    poinPenting = [
+                        "<strong>Norma Ringan:</strong> Biasanya terkait dengan norma kesopanan (usage/folkways) atau kebiasaan sehari-hari yang tidak terlalu fundamental.",
+                        "<strong>Contoh Pelanggaran Norma Ringan:</strong> Berbicara terlalu keras di tempat umum, cara makan yang dianggap tidak sopan, datang sedikit terlambat ke pertemuan non-formal, menggunakan pakaian yang kurang pas untuk situasi tertentu (tapi tidak melanggar kesusilaan).",
+                        "<strong>Bentuk Sanksi Sosial Ringan (Informal):</strong> Teguran halus, sindiran, gunjingan (gosip), pandangan tidak suka, dijauhi sementara oleh teman, cemoohan ringan."
+                    ];
+                    contohSoalLanjut = "Seorang siswa berbicara dengan suara sangat keras saat berada di perpustakaan sekolah, padahal sudah ada aturan tidak tertulis untuk menjaga ketenangan. Tentukan bentuk-bentuk sanksi sosial ringan yang paling mungkin diterima siswa tersebut dari orang-orang di sekitarnya (misalnya, dari petugas perpustakaan atau siswa lain)!";
+                    break;
+                case "20":
+                    penjelasanKonsep = "Kesadaran kolektif tentang toleransi adalah pemahaman dan komitmen bersama dalam masyarakat (khususnya sekolah) untuk menghargai dan menerima perbedaan (suku, agama, ras, pendapat, dll). Membangunnya memerlukan upaya terencana dan berkelanjutan.";
+                    kaitanMateri = "Nilai dan norma sosial yang mendukung toleransi perlu ditanamkan dan diperkuat. Merancang cara membangun kesadaran ini melibatkan aspek pendidikan, interaksi, dan penciptaan lingkungan yang inklusif.";
+                    poinPenting = [
+                        "<strong>Strategi Membangun Kesadaran Toleransi di Sekolah:</strong>",
+                        "  - <strong>Pendidikan Multikultural:</strong> Mengintegrasikan materi tentang keberagaman dan toleransi dalam kurikulum dan pembelajaran.",
+                        "  - <strong>Dialog Antariman/Antarbudaya:</strong> Mengadakan forum diskusi atau kegiatan bersama yang melibatkan siswa dari berbagai latar belakang.",
+                        "  - <strong>Kegiatan Kolaboratif:</strong> Proyek kelompok atau kegiatan ekstrakurikuler yang mendorong kerjasama lintas perbedaan.",
+                        "  - <strong>Role Model:</strong> Guru dan staf sekolah memberikan contoh perilaku toleran.",
+                        "  - <strong>Aturan Sekolah yang Inklusif:</strong> Tata tertib yang adil dan tidak diskriminatif, serta penanganan tegas terhadap intoleransi.",
+                        "  - <strong>Pemanfaatan Media Sekolah:</strong> Mading, website, atau media sosial sekolah untuk kampanye toleransi."
+                    ];
+                    contohSoalLanjut = "Sekolah Anda memiliki siswa dari berbagai latar belakang suku, agama, dan status sosial ekonomi. Namun, belakangan ini mulai muncul gesekan-gesekan kecil dan sikap kurang menghargai perbedaan antar siswa. Rancanglah sebuah program atau serangkaian kegiatan konkret yang dapat dilakukan di sekolah Anda untuk membangun kesadaran kolektif tentang pentingnya toleransi di antara para siswa! Jelaskan tujuan dan langkah-langkah pelaksanaan program tersebut.";
+                    break;
+                case "21":
+                    penjelasanKonsep = "Agen sosialisasi adalah pihak-pihak yang melaksanakan atau memengaruhi proses sosialisasi, yaitu proses penanaman nilai, norma, dan peran sosial kepada individu. Media (massa dan sosial) merupakan salah satu agen sosialisasi yang sangat berpengaruh di era modern.";
+                    kaitanMateri = "Media, baik media massa tradisional (TV, koran, radio) maupun media baru/sosial (internet, Instagram, TikTok, X), memainkan peran signifikan dalam membentuk persepsi, sikap, nilai, dan perilaku individu, terutama remaja.";
+                    poinPenting = [
+                        "<strong>Peran Positif Media sebagai Agen Sosialisasi:</strong>",
+                        "  - Menyebarkan informasi dan pengetahuan.",
+                        "  - Memperkenalkan keragaman budaya.",
+                        "  - Menanamkan nilai-nilai positif (misalnya, melalui tayangan edukatif, kampanye sosial).",
+                        "  - Memfasilitasi interaksi sosial dan pembentukan komunitas (online).",
+                        "<strong>Peran Negatif Media sebagai Agen Sosialisasi:</strong>",
+                        "  - Menyebarkan konten kekerasan, pornografi, atau ujaran kebencian.",
+                        "  - Membentuk stereotip negatif.",
+                        "  - Mendorong perilaku konsumtif dan materialistis.",
+                        "  - Dapat menyebabkan kecanduan, isolasi sosial (paradoksnya), dan masalah kesehatan mental (misalnya, akibat perbandingan sosial)."
+                    ];
+                    contohSoalLanjut = "Platform media sosial seperti TikTok dan Instagram sangat populer di kalangan remaja. Analisislah peran platform media sosial tersebut sebagai agen sosialisasi bagi remaja! Jelaskan minimal dua peran positif dan dua peran negatif yang dapat dimainkan oleh media sosial dalam proses sosialisasi remaja saat ini, beserta contohnya!";
+                    break;
+                case "22":
+                    penjelasanKonsep = "Gegar budaya (culture shock) adalah perasaan terkejut, bingung, cemas, atau disorientasi yang dialami seseorang ketika berpindah ke lingkungan budaya baru yang sangat berbeda dengan budaya asalnya. Proses sosialisasi di lingkungan baru ini menjadi tantangan tersendiri.";
+                    kaitanMateri = "Sosialisasi adalah proses adaptasi. Dalam konteks gegar budaya, individu harus mempelajari nilai, norma, bahasa, dan cara hidup baru, yang bisa jadi bertentangan dengan apa yang sudah ia pelajari sebelumnya. Keberhasilan sosialisasi di lingkungan baru akan menentukan seberapa baik ia mengatasi gegar budaya.";
+                    poinPenting = [
+                        "<strong>Tahapan Gegar Budaya (umumnya):</strong> Fase bulan madu (awal antusias), fase krisis/frustrasi (muncul kesulitan), fase penyesuaian/pemulihan, fase adaptasi/kemahiran.",
+                        "<strong>Faktor yang Mempengaruhi Gegar Budaya:</strong> Tingkat perbedaan budaya, kemampuan bahasa, kepribadian individu, dukungan sosial, lamanya tinggal.",
+                        "<strong>Proses Sosialisasi dalam Mengatasi Gegar Budaya:</strong> Belajar bahasa baru, memahami norma lokal, membangun jaringan sosial, menyesuaikan perilaku, mengembangkan sikap terbuka dan fleksibel."
+                    ];
+                    contohSoalLanjut = "Seorang siswa dari desa kecil di Indonesia mendapatkan beasiswa untuk melanjutkan sekolah di sebuah kota metropolitan di luar negeri yang memiliki budaya sangat berbeda. Pada beberapa bulan pertama, ia merasa kesulitan beradaptasi, sering merindukan kampung halaman, dan bingung dengan kebiasaan orang-orang di sekitarnya. Berikan penilaian Anda terhadap proses sosialisasi yang sedang dialami siswa tersebut dalam konteks gegar budaya! Faktor-faktor apa saja yang mungkin memengaruhi tingkat gegar budaya yang ia alami, dan strategi sosialisasi apa yang dapat membantunya beradaptasi?";
+                    break;
+                case "23":
+                    penjelasanKonsep = "Kelompok bermain (play group) adalah salah satu agen sosialisasi penting bagi anak usia dini, di mana mereka belajar berinteraksi dengan teman sebaya, berbagi, mengikuti aturan, dan mengembangkan keterampilan sosial dasar.";
+                    kaitanMateri = "Proses sosialisasi dalam kelompok bermain bersifat informal dan lebih banyak terjadi melalui imitasi, identifikasi, dan permainan. Ini adalah tahap awal bagi anak untuk belajar keluar dari lingkungan keluarga dan masuk ke dunia sosial yang lebih luas.";
+                    poinPenting = [
+                        "<strong>Bentuk Sosialisasi yang Terjadi:</strong>",
+                        "  - <strong>Belajar Peran Sosial:</strong> Anak belajar menjadi 'teman', 'murid' (jika ada guru), atau peran dalam permainan (misalnya, jadi dokter dalam main dokter-dokteran).",
+                        "  - <strong>Internalisasi Nilai dan Norma:</strong> Belajar berbagi mainan, antre, menunggu giliran, meminta maaf, mengucapkan terima kasih.",
+                        "  - <strong>Pengembangan Keterampilan Komunikasi:</strong> Belajar berbicara, mendengarkan, menyampaikan keinginan.",
+                        "  - <strong>Pengembangan Keterampilan Kerjasama dan Penyelesaian Konflik Sederhana.</strong>",
+                        "  - <strong>Imitasi dan Identifikasi:</strong> Meniru perilaku teman atau guru."
+                    ];
+                    contohSoalLanjut = "Dalam sebuah kelompok bermain anak usia 4-5 tahun, terlihat anak-anak sedang bermain peran sebagai penjual dan pembeli di pasar-pasaran. Mereka saling tawar-menawar mainan buah-buahan dan menggunakan uang mainan. Identifikasilah minimal tiga bentuk sosialisasi konkret yang sedang terjadi dalam aktivitas kelompok bermain tersebut! Jelaskan bagaimana setiap bentuk sosialisasi itu berkontribusi pada perkembangan anak.";
+                    break;
+                case "24":
+                    penjelasanKonsep = "Interaksi sosial dapat menghasilkan berbagai bentuk penyesuaian sikap individu terhadap orang lain atau kelompok, seperti kerjasama, akomodasi, atau bahkan asimilasi, tergantung pada situasi dan tujuan interaksi.";
+                    kaitanMateri = "Interaksi sosial adalah proses dinamis. Sikap individu tidak statis, tetapi dapat berubah dan disesuaikan sebagai respons terhadap interaksi dengan orang lain. Penentuan bentuk interaksi ini membantu memahami bagaimana hubungan sosial terbentuk dan dipertahankan.";
+                    poinPenting = [
+                        "<strong>Kerja Sama (Cooperation):</strong> Individu menyesuaikan sikap untuk bekerja sama mencapai tujuan bersama. Contoh: Siswa yang awalnya individualistis, menyesuaikan diri untuk aktif berkontribusi dalam kerja kelompok.",
+                        "<strong>Akomodasi (Accommodation):</strong> Individu menyesuaikan sikap untuk meredakan konflik atau ketegangan. Contoh: Dua siswa yang bertengkar, kemudian saling memaafkan dan menyesuaikan sikap agar bisa berteman lagi.",
+                        "<strong>Asimilasi (Assimilation):</strong> Individu dari budaya berbeda menyesuaikan sikap dan perilakunya secara mendalam hingga melebur dengan budaya dominan atau membentuk budaya baru. Contoh: Seorang imigran yang secara bertahap mengadopsi bahasa dan kebiasaan negara barunya.",
+                        "<strong>Akulturasi (Acculturation):</strong> Individu menerima unsur budaya lain tetapi tetap mempertahankan sebagian identitas budayanya sendiri, terjadi penyesuaian sikap untuk menerima hal baru tanpa kehilangan jati diri sepenuhnya."
+                    ];
+                    contohSoalLanjut = "Dua orang siswa yang berasal dari latar belakang budaya yang sangat berbeda ditempatkan dalam satu kamar asrama. Awalnya mereka sering salah paham karena perbedaan kebiasaan. Namun, setelah beberapa waktu, mereka mulai saling memahami, menghargai perbedaan, dan bahkan mengadopsi beberapa kebiasaan baik dari satu sama lain tanpa menghilangkan ciri khas budaya masing-masing. Bentuk interaksi sosial apa yang paling tepat menggambarkan proses penyesuaian sikap kedua siswa tersebut? Jelaskan alasan Anda!";
+                    break;
+                case "25":
+                    penjelasanKonsep = "Sosialisasi adalah proses fundamental di mana individu mempelajari dan menginternalisasi nilai, norma, pengetahuan, keterampilan, dan peran sosial yang berlaku dalam masyarakatnya. Proses ini sangat penting untuk pembentukan kepribadian seseorang.";
+                    kaitanMateri = "Proses sosialisasi adalah 'pabrik' kepribadian. Melalui interaksi dengan agen-agen sosialisasi (keluarga, sekolah, teman, media), individu mengembangkan konsep diri, identitas, sistem kepercayaan, dan pola perilaku yang khas, yang secara keseluruhan membentuk kepribadiannya.";
+                    poinPenting = [
+                        "<strong>Pembentukan Konsep Diri (Self-Concept):</strong> Bagaimana individu memandang dirinya sendiri, terbentuk melalui refleksi dari interaksi dengan orang lain (misalnya, 'looking-glass self' dari Cooley).",
+                        "<strong>Internalisasi Nilai dan Norma:</strong> Nilai dan norma yang dipelajari menjadi bagian dari sistem moral dan panduan perilaku individu.",
+                        "<strong>Pengembangan Keterampilan Sosial:</strong> Kemampuan berkomunikasi, berempati, bekerja sama, menyelesaikan konflik.",
+                        "<strong>Pembelajaran Peran Sosial:</strong> Memahami dan mampu menjalankan peran-peran yang diharapkan masyarakat (misalnya, peran sebagai anak, siswa, teman).",
+                        "<strong>Pembentukan Identitas:</strong> Kesadaran akan siapa dirinya dalam konteks sosial dan budaya."
+                    ];
+                    contohSoalLanjut = "Seorang anak yang dibesarkan dalam keluarga yang selalu memberikan dukungan positif, mengajarkan nilai kejujuran dan kerja keras, serta memberikan kesempatan untuk berpendapat, cenderung tumbuh menjadi individu yang percaya diri, bertanggung jawab, dan memiliki pendirian. Jelaskan bagaimana proses sosialisasi dalam keluarga tersebut berkontribusi penting dalam pembentukan kepribadian anak tersebut! Kaitkan dengan minimal dua aspek pembentukan kepribadian.";
+                    break;
+                case "26":
+                    penjelasanKonsep = "Keaktifan siswa dalam organisasi (misalnya OSIS, ekstrakurikuler) merupakan salah satu bentuk partisipasi sosial yang dapat memberikan pengalaman belajar di luar kelas formal. Keterlibatan ini memiliki pengaruh signifikan terhadap perkembangan sosial siswa.";
+                    kaitanMateri = "Proses sosialisasi tidak hanya terjadi di keluarga atau kelas, tetapi juga dalam kelompok teman sebaya dan organisasi. Organisasi siswa menyediakan 'laboratorium sosial' bagi remaja untuk mempraktikkan keterampilan dan peran sosial.";
+                    poinPenting = [
+                        "<strong>Pengaruh Positif Keaktifan Berorganisasi:</strong>",
+                        "  - Pengembangan keterampilan kepemimpinan (leadership) dan kerjasama tim (teamwork).",
+                        "  - Peningkatan keterampilan komunikasi dan public speaking.",
+                        "  - Perluasan jaringan sosial dan pertemanan.",
+                        "  - Pembelajaran manajemen waktu, tanggung jawab, dan penyelesaian masalah.",
+                        "  - Peningkatan rasa percaya diri dan kemandirian.",
+                        "  - Internalisasi nilai-nilai seperti demokrasi, toleransi, dan solidaritas (tergantung jenis organisasinya)."
+                    ];
+                    contohSoalLanjut = "Siswa A dikenal pasif dan kurang percaya diri di kelas, namun setelah ia aktif mengikuti kegiatan ekstrakurikuler debat selama satu tahun, ia menunjukkan perubahan signifikan menjadi lebih vokal, kritis, dan mampu bekerja sama dalam tim. Analisislah bagaimana keaktifan siswa A dalam organisasi ekstrakurikuler tersebut dapat memengaruhi perkembangan sosialnya secara positif! Sebutkan minimal tiga aspek perkembangan sosial yang terpengaruh.";
+                    break;
+                case "27":
+                    penjelasanKonsep = "Proses sosialisasi tidak selalu berjalan mulus di mana individu menerima begitu saja semua nilai yang diajarkan. Penolakan terhadap nilai dari agen sosialisasi (seperti orang tua) dapat terjadi karena berbagai faktor dan menunjukkan adanya dinamika dalam pembentukan kepribadian.";
+                    kaitanMateri = "Proses sosialisasi melibatkan interaksi dua arah. Remaja, dengan perkembangan kognitif dan pencarian identitasnya, mungkin mulai mempertanyakan, menyeleksi, atau bahkan menolak nilai-nilai yang dianggap tidak sesuai, meskipun berasal dari orang tua. Ini bisa menjadi bagian dari proses individuasi atau sosialisasi yang tidak sempurna/konfliktual.";
+                    poinPenting = [
+                        "<strong>Faktor Penyebab Penolakan Nilai:</strong>",
+                        "  - Pengaruh kuat dari agen sosialisasi lain (teman sebaya, media) yang menawarkan nilai alternatif.",
+                        "  - Perkembangan pemikiran kritis remaja yang mulai mempertanyakan otoritas atau relevansi nilai lama.",
+                        "  - Adanya 'generation gap' (kesenjangan generasi) dalam pandangan dan nilai.",
+                        "  - Pengalaman pribadi yang membuat nilai tersebut terasa tidak valid.",
+                        "  - Cara penyampaian nilai dari orang tua yang kurang efektif (misalnya, terlalu otoriter).",
+                        "<strong>Proses yang Mungkin Terjadi:</strong> Bisa mengarah pada <strong>sosialisasi ulang (resocialization)</strong> jika ia mengadopsi nilai baru secara signifikan, atau <strong>pembentukan identitas oposisional</strong>, atau sekadar <strong>negosiasi nilai</strong>."
+                    ];
+                    contohSoalLanjut = "Seorang remaja yang dibesarkan dalam keluarga dengan nilai-nilai tradisional yang kuat mulai menolak beberapa pandangan orang tuanya mengenai pilihan karir dan gaya hidup setelah ia banyak berinteraksi dengan teman-temannya di perkotaan dan terekspos informasi dari internet. Tentukan dan jelaskan proses sosialisasi apa yang mungkin sedang terjadi pada remaja tersebut ketika ia menolak nilai dari orang tuanya! Faktor-faktor apa saja yang bisa memicu penolakan tersebut?";
+                    break;
+                case "28":
+                    penjelasanKonsep = "Media sosial (Instagram, TikTok, X, Facebook, dll.) telah menjadi agen sosialisasi yang sangat dominan, terutama bagi generasi muda. Media sosial memengaruhi cara individu belajar tentang dunia, berinteraksi, membentuk identitas, dan mengadopsi nilai serta norma.";
+                    kaitanMateri = "Sebagai agen sosialisasi, media sosial memiliki karakteristik unik (interaktif, cepat, visual, global) yang membedakannya dari agen tradisional. Pengaruhnya bisa sangat kuat, baik positif maupun negatif, dalam membentuk perilaku dan pandangan dunia individu.";
+                    poinPenting = [
+                        "<strong>Cara Media Sosial Mensosialisasikan:</strong>",
+                        "  - Melalui konten yang dikonsumsi (video, gambar, teks) yang menampilkan gaya hidup, tren, opini, dan nilai-nilai tertentu.",
+                        "  - Melalui interaksi dengan pengguna lain (teman, influencer, komunitas online) yang membentuk norma kelompok.",
+                        "  - Melalui algoritma yang mempersonalisasi feed dan memperkuat paparan terhadap jenis konten tertentu (echo chamber).",
+                        "<strong>Pengaruh Utama:</strong> Pembentukan identitas (termasuk citra diri online), adopsi tren fashion dan bahasa, pembentukan opini publik, sosialisasi politik, perilaku konsumtif, hingga norma-norma pergaulan online."
+                    ];
+                    contohSoalLanjut = "Jelaskan bagaimana platform media sosial seperti Instagram dapat berfungsi sebagai agen sosialisasi dalam membentuk persepsi remaja mengenai standar kecantikan ideal! Aspek-aspek apa dari media sosial tersebut yang berkontribusi pada proses sosialisasi ini?";
+                    break;
+                case "29":
+                    penjelasanKonsep = "Interaksi antara guru dan murid dalam proses belajar mengajar di kelas adalah bentuk interaksi sosial formal yang memiliki tujuan spesifik, yaitu transfer pengetahuan dan pembentukan karakter. Bentuk interaksinya bisa beragam, dari instruksional hingga lebih partisipatif.";
+                    kaitanMateri = "Interaksi sosial di kelas adalah inti dari proses pendidikan. Pola interaksi ini dipengaruhi oleh peran guru (sebagai pengajar, fasilitator, motivator) dan murid (sebagai pembelajar aktif/pasif), serta norma-norma yang berlaku di lingkungan sekolah.";
+                    poinPenting = [
+                        "<strong>Bentuk Interaksi Umum:</strong>",
+                        "  - <strong>Interaksi Instruksional/Satu Arah:</strong> Guru menjelaskan, murid mendengarkan (ceramah).",
+                        "  - <strong>Interaksi Tanya Jawab/Dua Arah:</strong> Guru bertanya, murid menjawab, atau sebaliknya.",
+                        "  - <strong>Diskusi Kelompok/Multi Arah:</strong> Siswa berinteraksi satu sama lain dengan difasilitasi guru.",
+                        "  - <strong>Kerja Sama (Cooperative Learning):</strong> Siswa bekerja sama dalam kelompok untuk menyelesaikan tugas.",
+                        "  - Bisa juga terjadi interaksi yang bersifat <strong>akomodatif</strong> (misalnya, guru menyesuaikan metode mengajar) atau bahkan <strong>kompetitif</strong> (dalam suasana kuis atau debat)."
+                    ];
+                    contohSoalLanjut = "Dalam sebuah sesi pembelajaran Sosiologi, seorang guru meminta siswa untuk membentuk kelompok kecil, mendiskusikan sebuah studi kasus tentang konflik antaretnis, dan kemudian mempresentasikannya di depan kelas. Identifikasilah minimal dua bentuk interaksi sosial yang dominan terjadi antara guru dan murid, serta antar murid, dalam proses belajar tersebut! Jelaskan ciri-ciri dari masing-masing bentuk interaksi itu.";
+                    break;
+                case "30":
+                    penjelasanKonsep = "Ketika dua kelompok etnis yang berbeda hidup berdampingan dalam satu wilayah, berbagai bentuk interaksi sosial dapat terjadi, mulai dari yang harmonis (asosiatif) hingga yang berpotensi konflik (disosiatif), tergantung pada banyak faktor.";
+                    kaitanMateri = "Interaksi sosial antar kelompok etnis adalah fokus penting dalam studi masyarakat multikultural. Pemahaman bentuk interaksi ini membantu menganalisis dinamika hubungan antaretnis dan upaya menjaga integrasi sosial.";
+                    poinPenting = [
+                        "<strong>Bentuk Interaksi Asosiatif yang Mungkin:</strong>",
+                        "  - <strong>Akomodasi:</strong> Saling menyesuaikan diri untuk hidup berdampingan secara damai (misalnya, toleransi terhadap perbedaan adat, pembentukan aturan bersama).",
+                        "  - <strong>Kerja Sama:</strong> Bekerja sama dalam bidang ekonomi (pasar), sosial (kegiatan lingkungan), atau budaya (festival bersama).",
+                        "  - <strong>Akulturasi:</strong> Terjadi percampuran unsur budaya antar kedua kelompok etnis tanpa menghilangkan identitas asli masing-masing (misalnya, dalam bahasa, makanan, seni).",
+                        "  - <strong>Asimilasi (jarang terjadi sepenuhnya):</strong> Peleburan budaya hingga membentuk budaya baru yang menghilangkan perbedaan etnis.",
+                        "<strong>Bentuk Interaksi Disosiatif yang Mungkin (jika ada masalah):</strong>",
+                        "  - <strong>Persaingan:</strong> Dalam bidang ekonomi atau politik.",
+                        "  - <strong>Kontravensi:</strong> Adanya prasangka, stereotip, atau ketidaksukaan tersembunyi.",
+                        "  - <strong>Konflik Terbuka:</strong> Jika perbedaan atau persaingan tidak dikelola dengan baik."
+                    ];
+                    contohSoalLanjut = "Di sebuah pasar tradisional, pedagang dari kelompok etnis A dan pedagang dari kelompok etnis B setiap hari berinteraksi dalam kegiatan jual beli. Mereka saling menghargai perbedaan bahasa dan adat istiadat masing-masing, bahkan terkadang saling membantu jika ada kesulitan. Tentukan bentuk interaksi sosial asosiatif yang paling menonjol terjadi antara dua kelompok etnis tersebut di pasar! Berikan alasan dan contoh konkret dari interaksi mereka.";
+                    break;
+                 case "31":
+                    penjelasanKonsep = "Kelompok sosial adalah himpunan dua orang atau lebih yang memiliki kesadaran bersama akan keanggotaan, saling berinteraksi, memiliki pola perilaku, dan struktur sosial tertentu. Kelompok sosial memiliki ciri-ciri khas yang membedakannya dari sekadar kerumunan orang.";
+                    kaitanMateri = "Kelompok sosial adalah unit dasar dalam analisis sosiologi. Memahami ciri-cirinya membantu kita mengidentifikasi berbagai jenis kelompok yang ada di masyarakat dan bagaimana kelompok tersebut memengaruhi individu dan struktur sosial yang lebih luas.";
+                    poinPenting = [
+                        "<strong>Ciri-ciri Utama Kelompok Sosial:</strong>",
+                        "  - Adanya <strong>kesadaran jenis</strong> atau kesadaran sebagai bagian dari kelompok tersebut.",
+                        "  - Adanya <strong>hubungan timbal balik (interaksi)</strong> antar anggota.",
+                        "  - Adanya <strong>faktor pengikat bersama</strong>, seperti kepentingan yang sama, tujuan yang sama, ideologi, keturunan, atau ciri fisik.",
+                        "  - Memiliki <strong>struktur, kaidah (norma), dan pola perilaku</strong> yang relatif mapan dan dipahami bersama oleh anggotanya.",
+                        "  - Biasanya memiliki <strong>identitas kelompok</strong> yang membedakannya dari kelompok lain.",
+                        "  - Terbentuk karena adanya <strong>dorongan untuk hidup bersama</strong> dan memenuhi kebutuhan."
+                    ];
+                    contohSoalLanjut = "Sebuah tim sepak bola di sekolah terdiri dari 15 siswa yang rutin berlatih bersama, memiliki pelatih, kapten tim, aturan main yang disepakati, dan tujuan bersama untuk memenangkan turnamen. Analisislah mengapa tim sepak bola tersebut dapat dikategorikan sebagai kelompok sosial dengan mengacu pada minimal empat ciri-ciri kelompok sosial!";
+                    break;
+                case "32":
+                    penjelasanKonsep = "Kelompok primer adalah kelompok sosial kecil yang ditandai dengan hubungan yang akrab, personal, intim, dan langgeng antar anggotanya. Contoh utama adalah keluarga dan kelompok teman sebaya yang sangat dekat. Kelompok primer memainkan peran krusial dalam pembentukan kepribadian individu.";
+                    kaitanMateri = "Kelompok sosial, khususnya kelompok primer, adalah agen sosialisasi utama. Dalam kelompok primer, individu pertama kali belajar nilai, norma, bahasa, dan mengembangkan konsep diri serta keterampilan emosional yang mendasari kepribadiannya.";
+                    poinPenting = [
+                        "<strong>Karakteristik Kelompok Primer (menurut Charles Horton Cooley):</strong> Hubungan tatap muka (face-to-face), bersifat intim dan emosional, kerjasama yang erat, keanggotaan relatif permanen.",
+                        "<strong>Pentingnya dalam Pembentukan Kepribadian:</strong>",
+                        "  - <strong>Pembentukan Dasar Kepercayaan dan Keamanan Emosional:</strong> Melalui kasih sayang dan perhatian dari keluarga.",
+                        "  - <strong>Internalisasi Nilai dan Norma Fundamental:</strong> Belajar tentang baik-buruk, benar-salah pertama kali.",
+                        "  - <strong>Pengembangan Konsep Diri (Looking-Glass Self):</strong> Melihat diri sendiri melalui 'cermin' reaksi orang-orang terdekat.",
+                        "  - <strong>Pembelajaran Peran Sosial Dasar:</strong> Peran sebagai anak, saudara, teman.",
+                        "  - <strong>Pengembangan Keterampilan Komunikasi dan Interaksi Dasar."
+                    ];
+                    contohSoalLanjut = "Keluarga sering disebut sebagai kelompok primer yang paling berpengaruh dalam kehidupan seseorang. Jelaskan minimal tiga alasan mengapa keluarga sebagai kelompok primer memiliki peran yang sangat penting dalam proses pembentukan kepribadian seorang anak! Berikan contoh untuk setiap alasan tersebut.";
+                    break;
+                case "33":
+                    penjelasanKonsep = "Kelompok sosial dapat dibedakan menjadi kelompok formal dan informal berdasarkan derajat formalitas struktur, aturan, dan tujuan pembentukannya.";
+                    kaitanMateri = "Membedakan kelompok formal dan informal membantu memahami bagaimana individu berinteraksi dalam konteks yang berbeda dan bagaimana struktur kelompok memengaruhi perilaku anggotanya. Keduanya memiliki fungsi masing-masing dalam masyarakat.";
+                    poinPenting = [
+                        "<strong>Kelompok Formal:</strong>",
+                        "  - Dibentuk secara sengaja dan resmi untuk mencapai tujuan tertentu.",
+                        "  - Memiliki struktur organisasi yang jelas (hierarki, pembagian kerja).",
+                        "  - Aturan dan prosedur tertulis yang tegas (AD/ART, tata tertib).",
+                        "  - Keanggotaan biasanya didasarkan pada kualifikasi atau penunjukan resmi.",
+                        "  - Hubungan antar anggota cenderung impersonal dan instrumental (berorientasi tugas).",
+                        "  - Contoh: Sekolah, perusahaan, organisasi pemerintah, partai politik, PSSI.",
+                        "<strong>Kelompok Informal:</strong>",
+                        "  - Terbentuk secara spontan karena adanya kesamaan minat, kebutuhan, atau kedekatan personal.",
+                        "  - Tidak memiliki struktur organisasi yang baku atau aturan tertulis yang kaku.",
+                        "  - Hubungan antar anggota bersifat personal, akrab, dan emosional.",
+                        "  - Keanggotaan bersifat sukarela dan tidak terikat formalitas.",
+                        "  - Contoh: Kelompok teman bermain, geng, klik (clique), kelompok arisan ibu-ibu kompleks, komunitas hobi."
+                    ];
+                    contohSoalLanjut = "Organisasi Siswa Intra Sekolah (OSIS) di sebuah SMA memiliki struktur kepengurusan yang jelas, program kerja tahunan, dan anggaran dasar/anggaran rumah tangga (AD/ART). Di sisi lain, sekelompok siswa di SMA yang sama sering berkumpul sepulang sekolah untuk bermain game online bersama tanpa ada aturan formal. Bedakan dengan jelas antara OSIS sebagai kelompok formal dan kelompok siswa pemain game online tersebut sebagai kelompok informal, berdasarkan minimal tiga aspek pembeda!";
+                    break;
+                case "34":
+                    penjelasanKonsep = "Konflik sosial, meskipun sering dianggap merusak, juga dapat memiliki dampak atau fungsi positif bagi masyarakat jika dikelola dengan baik. Pandangan ini dikemukakan oleh beberapa sosiolog seperti Lewis Coser.";
+                    kaitanMateri = "Konflik sosial adalah bagian dari dinamika masyarakat. Menilai dampak positifnya membantu kita memahami bahwa konflik tidak selalu harus dihindari mati-matian, tetapi bisa menjadi motor perubahan atau penguatan ikatan sosial dalam kondisi tertentu.";
+                    poinPenting = [
+                        "<strong>Dampak Positif Konflik Sosial:</strong>",
+                        "  - <strong>Meningkatkan Solidaritas Kelompok (In-group Solidarity):</strong> Ketika suatu kelompok berkonflik dengan kelompok lain (out-group), rasa persatuan dan kohesi di dalam kelompok tersebut bisa meningkat.",
+                        "  - <strong>Mendorong Perubahan Sosial:</strong> Konflik dapat mengungkap ketidakadilan atau masalah dalam sistem sosial dan mendorong tuntutan untuk perubahan ke arah yang lebih baik.",
+                        "  - <strong>Memperjelas Norma dan Batas Antar Kelompok:</strong> Konflik dapat membantu mempertegas identitas kelompok dan norma-norma yang berlaku.",
+                        "  - <strong>Sebagai Katup Penyelamat (Safety Valve):</strong> Konflik dalam skala kecil dan terkontrol dapat menyalurkan ketegangan dan mencegah ledakan konflik yang lebih besar.",
+                        "  - <strong>Menciptakan Keseimbangan Baru:</strong> Setelah konflik, bisa tercapai kesepakatan atau kompromi yang menciptakan tatanan sosial yang lebih stabil atau adil."
+                    ];
+                    contohSoalLanjut = "Terjadinya demonstrasi buruh yang menuntut kenaikan upah kepada perusahaan seringkali dipandang sebagai bentuk konflik. Namun, dari perspektif sosiologis tertentu, konflik semacam ini juga dapat dinilai memiliki dampak positif. Berikan penilaian Anda mengenai minimal dua dampak positif yang mungkin timbul dari konflik antara buruh dan perusahaan tersebut bagi dinamika hubungan industrial atau masyarakat secara lebih luas!";
+                    break;
+                case "35":
+                    penjelasanKonsep = "Masyarakat multikultural, dengan keragaman suku, agama, ras, dan budaya, memiliki potensi konflik yang lebih tinggi jika perbedaan tersebut tidak dikelola dengan baik. Sumber konflik bisa berasal dari berbagai aspek kehidupan sosial.";
+                    kaitanMateri = "Konflik sosial dalam masyarakat multikultural seringkali berakar pada masalah identitas, prasangka, stereotip, persaingan sumber daya, atau ketidakadilan struktural. Menganalisis sumber utama konflik penting untuk upaya pencegahan dan resolusi.";
+                    poinPenting = [
+                        "<strong>Sumber Utama Konflik dalam Masyarakat Multikultural:</strong>",
+                        "  - <strong>Perbedaan Nilai dan Norma Budaya:</strong> Apa yang dianggap baik/benar oleh satu kelompok bisa berbeda atau bertentangan dengan kelompok lain.",
+                        "  - <strong>Prasangka dan Stereotip Negatif:</strong> Anggapan buruk yang tidak berdasar terhadap kelompok lain.",
+                        "  - <strong>Etnosentrisme:</strong> Menganggap budaya sendiri paling unggul dan meremehkan budaya lain.",
+                        "  - <strong>Persaingan Ekonomi dan Politik:</strong> Perebutan akses terhadap sumber daya (pekerjaan, pendidikan, kekuasaan) antar kelompok etnis/agama.",
+                        "  - <strong>Ketidakadilan Sosial dan Diskriminasi:</strong> Perlakuan tidak adil yang diterima oleh kelompok minoritas.",
+                        "  - <strong>Masalah Sejarah dan Trauma Masa Lalu:</strong> Konflik lama yang belum terselesaikan.",
+                        "  - <strong>Provokasi dan Ujaran Kebencian:</strong> Penyebaran informasi yang memicu permusuhan."
+                    ];
+                    contohSoalLanjut = "Indonesia adalah negara dengan masyarakat yang sangat multikultural. Meskipun keberagaman ini adalah kekayaan, ia juga menyimpan potensi konflik. Analisislah minimal tiga sumber utama yang paling sering menjadi pemicu konflik sosial dalam konteks masyarakat multikultural di Indonesia! Berikan contoh kasus nyata (hipotetis atau aktual singkat) untuk setiap sumber konflik yang Anda sebutkan.";
+                    break;
+                case "36":
+                    penjelasanKonsep = "Integrasi sosial adalah proses penyatuan berbagai unsur yang berbeda dalam masyarakat (individu, kelompok, nilai, norma) sehingga menjadi satu kesatuan yang harmonis dan berfungsi. Upaya menyatukan masyarakat pasca-konflik memerlukan strategi yang komprehensif.";
+                    kaitanMateri = "Setelah terjadi konflik, masyarakat seringkali mengalami disintegrasi atau perpecahan. Upaya integrasi sosial bertujuan untuk memulihkan hubungan, membangun kembali kepercayaan, dan menciptakan kohesi sosial yang baru.";
+                    poinPenting = [
+                        "<strong>Upaya Mencapai Integrasi Pasca-Konflik:</strong>",
+                        "  - <strong>Rekonsiliasi:</strong> Proses pemulihan hubungan dan saling memaafkan antara pihak-pihak yang berkonflik.",
+                        "  - <strong>Rehabilitasi:</strong> Pemulihan kondisi fisik (infrastruktur) dan psikologis (trauma healing) korban konflik.",
+                        "  - <strong>Pembangunan Kepercayaan (Trust Building):</strong> Melalui dialog, kerjasama, dan transparansi.",
+                        "  - <strong>Penguatan Pranata Sosial:</strong> Memfungsikan kembali lembaga-lembaga sosial (adat, agama, pendidikan) yang dapat mempersatukan.",
+                        "  - <strong>Penegakan Hukum yang Adil:</strong> Memberikan keadilan bagi korban dan pelaku untuk mencegah dendam.",
+                        "  - <strong>Pendidikan Perdamaian dan Multikulturalisme:</strong> Menanamkan nilai-nilai toleransi dan saling menghargai.",
+                        "  - <strong>Pemberdayaan Ekonomi Bersama:</strong> Menciptakan proyek atau usaha bersama yang melibatkan berbagai kelompok."
+                    ];
+                    contohSoalLanjut = "Setelah terjadi konflik antar dua desa yang bertetangga akibat sengketa batas wilayah, pemerintah daerah bersama tokoh masyarakat berupaya untuk menyatukan kembali kedua komunitas tersebut. Tentukan minimal tiga upaya konkret yang dapat dilakukan untuk membangun kembali integrasi sosial antara kedua desa pasca-konflik tersebut! Jelaskan mengapa upaya-upaya tersebut dianggap penting.";
+                    break;
+                case "37":
+                    penjelasanKonsep = "Integrasi sosial adalah kondisi di mana berbagai unsur masyarakat dapat hidup bersama secara harmonis dan saling melengkapi. Ada beberapa faktor yang dapat memudahkan atau mempercepat tercapainya integrasi sosial.";
+                    kaitanMateri = "Memahami faktor-faktor ini penting untuk merancang strategi yang efektif dalam membangun dan memelihara persatuan dalam masyarakat yang beragam.";
+                    poinPenting = [
+                        "<strong>Faktor yang Memudahkan Integrasi Sosial:</strong>",
+                        "  - <strong>Homogenitas Kelompok (relatif):</strong> Jika perbedaan tidak terlalu besar atau tajam.",
+                        "  - <strong>Besar Kecilnya Kelompok:</strong> Kelompok kecil biasanya lebih mudah terintegrasi.",
+                        "  - <strong>Mobilitas Geografis:</strong> Perpindahan penduduk yang merata dapat mendorong interaksi dan pembauran.",
+                        "  - <strong>Efektivitas Komunikasi:</strong> Kemudahan dan kelancaran komunikasi antar kelompok.",
+                        "  - <strong>Adanya Konsensus Nilai Bersama:</strong> Kesepakatan terhadap nilai-nilai dasar yang dijunjung tinggi bersama.",
+                        "  - <strong>Sikap Toleransi dan Saling Menghargai Perbedaan.</strong>",
+                        "  - <strong>Adanya Musuh Bersama dari Luar (Common Enemy):</strong> Dapat meningkatkan solidaritas internal.",
+                        "  - <strong>Perkawinan Campuran (Amalgamasi).</strong>",
+                        "  - <strong>Kesempatan Ekonomi yang Merata dan Keadilan Sosial."
+                    ];
+                    contohSoalLanjut = "Jelaskan minimal tiga faktor yang dapat memudahkan tercapainya proses integrasi sosial dalam sebuah masyarakat yang memiliki keragaman budaya! Berikan contoh bagaimana setiap faktor tersebut berkontribusi pada kemudahan integrasi.";
+                    break;
+                case "38":
+                    penjelasanKonsep = "Konflik sosial dapat diklasifikasikan berdasarkan berbagai kriteria, salah satunya adalah berdasarkan sumber atau isu yang dipermasalahkan, seperti perbedaan ideologi. Konflik ideologi terjadi karena adanya pertentangan fundamental dalam sistem gagasan, keyakinan, atau pandangan dunia.";
+                    kaitanMateri = "Konflik sosial berdasarkan perbedaan ideologi seringkali bersifat mendalam dan sulit diselesaikan karena menyangkut prinsip-prinsip dasar yang dianut oleh kelompok-kelompok yang bertikai.";
+                    poinPenting = [
+                        "<strong>Ideologi:</strong> Sistem gagasan, nilai, kepercayaan, dan tujuan yang menjadi dasar pandangan hidup dan perjuangan suatu kelompok (misalnya, liberalisme, komunisme, nasionalisme, fundamentalisme agama).",
+                        "<strong>Ciri Konflik Ideologi:</strong>",
+                        "  - Melibatkan pertentangan prinsip dan pandangan dunia yang mendasar.",
+                        "  - Seringkali bersifat total dan sulit dikompromikan.",
+                        "  - Dapat memobilisasi massa yang besar dan emosional.",
+                        "<strong>Contoh Konflik Ideologi:</strong> Perang Dingin antara blok Barat (liberal-kapitalis) dan blok Timur (komunis), konflik antara kelompok sekuler dan kelompok agama yang ingin menerapkan hukum agama secara formal dalam negara."
+                    ];
+                    contohSoalLanjut = "Di sebuah negara, terjadi ketegangan dan konflik berkepanjangan antara kelompok yang memperjuangkan sistem pemerintahan sekuler (pemisahan agama dan negara) dengan kelompok yang menginginkan penerapan hukum agama sebagai dasar negara. Identifikasilah jenis konflik sosial yang terjadi dalam kasus tersebut berdasarkan sumber permasalahannya! Jelaskan mengapa konflik tersebut dapat dikategorikan sebagai jenis konflik yang Anda sebutkan.";
+                    break;
+                case "39":
+                    penjelasanKonsep = "Penyelesaian konflik dapat dilakukan melalui berbagai cara, salah satunya adalah dengan melibatkan pihak ketiga. Jika pihak ketiga tersebut bersifat netral, tidak memihak, dan hanya berfungsi sebagai fasilitator atau penengah, maka bentuk penyelesaiannya bisa berupa mediasi atau arbitrase (tergantung kewenangan pihak ketiga).";
+                    kaitanMateri = "Penyelesaian konflik dengan bantuan pihak ketiga netral seringkali lebih efektif jika pihak-pihak yang berkonflik sulit mencapai kesepakatan sendiri. Pihak ketiga membantu menjembatani komunikasi dan mencari solusi yang dapat diterima bersama.";
+                    poinPenting = [
+                        "<strong>Mediasi:</strong> Pihak ketiga (mediator) bersifat netral dan membantu para pihak yang berkonflik untuk berunding dan mencapai kesepakatan sukarela. Mediator tidak memiliki wewenang untuk membuat keputusan, hanya memfasilitasi proses.",
+                        "<strong>Arbitrase:</strong> Pihak ketiga (arbiter) bersifat netral dan memiliki wewenang untuk mendengarkan argumen dari kedua belah pihak, kemudian membuat keputusan yang mengikat bagi mereka. Keputusan arbiter bersifat final.",
+                        "<strong>Konsiliasi:</strong> Pihak ketiga mempertemukan keinginan pihak yang berselisih untuk mencapai persetujuan dan menyelesaikan perselisihan tersebut. Perannya lebih aktif dalam menawarkan solusi daripada mediator.",
+                        "Pentingnya netralitas pihak ketiga agar dipercaya oleh semua pihak."
+                    ];
+                    contohSoalLanjut = "Dua orang karyawan di sebuah perusahaan terlibat perselisihan mengenai pembagian bonus akhir tahun. Karena mereka tidak dapat menyelesaikannya sendiri, manajer SDM (yang dianggap netral oleh keduanya) turun tangan untuk membantu mereka berdiskusi, mengklarifikasi masalah, dan mencari solusi yang dapat diterima bersama tanpa memaksakan keputusan. Tentukan bentuk penyelesaian konflik yang paling tepat menggambarkan peran manajer SDM tersebut! Jelaskan alasan Anda.";
+                    break;
+                case "40":
+                    penjelasanKonsep = "Teknologi, terutama teknologi informasi dan komunikasi (TIK), adalah salah satu faktor pendorong perubahan sosial yang paling signifikan di era modern. Pengaruhnya bersifat multidimensional, mencakup aspek ekonomi, sosial, budaya, dan politik.";
+                    kaitanMateri = "Perubahan sosial akibat teknologi bisa sangat cepat dan mendasar. Sosiologi menganalisis bagaimana teknologi diadopsi, bagaimana ia mengubah interaksi dan struktur sosial, serta dampak positif dan negatif yang ditimbulkannya.";
+                    poinPenting = [
+                        "<strong>Pengaruh Teknologi terhadap Perubahan Sosial:</strong>",
+                        "  - <strong>Cara Berkomunikasi dan Berinteraksi:</strong> Munculnya media sosial, email, chat, video call mengubah pola komunikasi (lebih cepat, global, tapi bisa mengurangi interaksi tatap muka).",
+                        "  - <strong>Ekonomi dan Pekerjaan:</strong> Otomatisasi, e-commerce, pekerjaan jarak jauh (remote work), munculnya profesi baru terkait teknologi, hilangnya beberapa pekerjaan tradisional.",
+                        "  - <strong>Pendidikan dan Akses Informasi:</strong> Pembelajaran online (e-learning), kemudahan akses ke berbagai sumber informasi (tapi juga tantangan hoax).",
+                        "  - <strong>Budaya dan Gaya Hidup:</strong> Penyebaran budaya populer global, tren baru, perubahan dalam konsumsi media, hiburan, dan rekreasi.",
+                        "  - <strong>Struktur Sosial:</strong> Potensi mengurangi kesenjangan geografis, namun bisa memperlebar kesenjangan digital (digital divide).",
+                        "  - <strong>Politik dan Partisipasi:</strong> Kemudahan mobilisasi massa online, kampanye digital, tapi juga risiko polarisasi dan penyebaran disinformasi."
+                    ];
+                    contohSoalLanjut = "Kehadiran platform ojek online (seperti Gojek atau Grab) telah membawa perubahan signifikan dalam kehidupan masyarakat perkotaan di Indonesia, mulai dari cara orang bertransportasi, memesan makanan, hingga mengirim barang. Analisislah minimal tiga pengaruh konkret dari teknologi platform ojek online tersebut terhadap perubahan sosial di masyarakat perkotaan! Jelaskan apakah pengaruh tersebut lebih bersifat positif atau negatif, atau keduanya.";
+                    break;
+                default:
+                    penjelasanKonsep = "Penjelasan untuk indikator ini akan segera ditambahkan.";
+                    kaitanMateri = "Informasi lebih lanjut akan tersedia.";
+                    poinPenting = ["Mohon periksa kembali nanti."];
+                    contohSoalLanjut = "Contoh soal untuk indikator ini sedang disiapkan.";
+            }
+
+            let poinPentingHTML = poinPenting.map(p => `<li class="text-sm">${p}</li>`).join('');
+
+            return `
+                <div class="details-content">
+                    <h4 class="font-semibold text-gray-800 mt-4 mb-2">Materi Lebih Lanjut:</h4>
+                    <p class="text-sm mb-2"><strong>Penjelasan Konsep:</strong> ${penjelasanKonsep}</p>
+                    <p class="text-sm mb-2"><strong>Kaitan dengan Materi Pokok:</strong> ${kaitanMateri}</p>
+                    <p class="text-sm mb-1"><strong>Poin Penting/Fokus Belajar:</strong></p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 mb-3">${poinPentingHTML}</ul>
+                    <h4 class="font-semibold text-gray-800 mt-3 mb-1">Contoh Soal Lebih Dalam:</h4>
+                    <p class="italic text-sm">${contohSoalLanjut}</p>
+                </div>
+            `;
+        }
+
+
+        const data = parseData(kisiKisiText);
+
+        const groupedData = data.reduce((acc, item) => {
+            if (!acc[item.materi]) {
+                acc[item.materi] = [];
+            }
+            acc[item.materi].push(item);
+            return acc;
+        }, {});
+
+        const navTabsContainer = document.getElementById('navTabs');
+        const indicatorsContainer = document.getElementById('indicatorsContainer');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        let activeTab = null;
+
+        const displayIndicators = (materi) => {
+            welcomeMessage.style.display = 'none';
+            indicatorsContainer.innerHTML = '';
+            const items = groupedData[materi];
+            
+            const materiTitle = document.createElement('h2');
+            materiTitle.className = 'text-2xl font-semibold text-gray-700 mb-6';
+            materiTitle.textContent = `Materi Pokok: ${materi}`;
+            indicatorsContainer.appendChild(materiTitle);
+
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'indicator-item p-4 mb-3 cursor-pointer';
+                
+                const indicatorP = document.createElement('p');
+                indicatorP.className = 'font-semibold text-gray-800';
+                indicatorP.textContent = `${item.no}. ${item.indikator}`;
+                
+                const briefIdeaP = document.createElement('p');
+                briefIdeaP.className = 'text-xs text-gray-500 mt-1 italic';
+                briefIdeaP.textContent = item.sampleQuestionIdea; // Brief idea
+
+                const detailsDiv = document.createElement('div');
+                detailsDiv.className = 'indicator-details mt-3 p-4 rounded-md text-gray-700 details-enter-from'; 
+                
+                const detailedContent = getIndicatorDetailsContent(item); 
+                detailsDiv.innerHTML = `
+                    <p class="text-sm"><strong>Level Kognitif:</strong> ${item.level}</p>
+                    <p class="text-sm"><strong>Bentuk Soal:</strong> ${item.bentuk}</p>
+                    ${detailedContent}
+                `;
+                
+                itemDiv.appendChild(indicatorP);
+                itemDiv.appendChild(briefIdeaP);
+                itemDiv.appendChild(detailsDiv);
+                
+                itemDiv.addEventListener('click', () => {
+                    const isHidden = detailsDiv.classList.contains('details-enter-from');
+                    document.querySelectorAll('.indicator-details.details-enter-to').forEach(openDetail => {
+                        if (openDetail !== detailsDiv) {
+                            openDetail.classList.remove('details-enter-to');
+                            openDetail.classList.add('details-enter-from');
+                        }
+                    });
+
+                    if (isHidden) {
+                        detailsDiv.classList.remove('details-enter-from');
+                        detailsDiv.classList.add('details-enter-to');
+                    } else {
+                        detailsDiv.classList.remove('details-enter-to');
+                        detailsDiv.classList.add('details-enter-from');
+                    }
+                });
+                
+                indicatorsContainer.appendChild(itemDiv);
+            });
+        };
+
+        Object.keys(groupedData).forEach(materi => {
+            const tabButton = document.createElement('button');
+            tabButton.className = 'nav-button py-2 px-3 text-sm font-medium';
+            tabButton.textContent = materi;
+            tabButton.addEventListener('click', () => {
+                if (activeTab) {
+                    activeTab.classList.remove('active');
+                }
+                tabButton.classList.add('active');
+                activeTab = tabButton;
+                displayIndicators(materi);
+            });
+            navTabsContainer.appendChild(tabButton);
+        });
+
+        if (navTabsContainer.firstChild) {
+           // Default: tidak ada tab yang aktif, tampilkan welcome message
+           // Jika ingin tab pertama aktif: navTabsContainer.firstChild.click(); 
+        }
+
+    </script>
+</body>
+</html>
